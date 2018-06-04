@@ -1,0 +1,77 @@
+<script>
+class Ninja {
+  constructor(name) {
+    this.name = name;
+    this.health = 100;
+    this.speed = 3;
+    this.strength = 3;
+  }
+    sayName(){
+      console.log(`My name is ${this.name}`)
+    }
+
+    showStats() {
+      console.log(`Name: ${this.name}\nHealth: ${this.health}\nStrength: ${this.strength}\nSpeed: ${this.speed}`)
+    }
+
+    drinkSake() {
+      this.receiveHealth(10);
+      console.log(`Drank some sake... now I have ${this.health} health...`)
+    }
+
+    receiveHealth(health) {
+      this.health = this.health + health;
+    }
+
+    receiveDamage(damage) {
+      this.health = this.health - damage;
+    }
+
+    kick(target) {
+      let damage;
+      if(!(target instanceof Ninja)){
+        console.log('Error! You did not input a Ninja as the target');
+        return;
+      }
+      damage = this.strength * 15;
+      target.receiveDamage(damage);
+      console.log(`${target.name} was kicked by ${this.name} and lost ${damage} health. (${target.name}: ${target.health} health remaining)`);
+    }
+
+    punch(target) {
+      if(!(target instanceof Ninja)){
+        console.log('Error! You did not input a Ninja as the target');
+        return;
+      }
+      target.receiveDamage(5);
+      console.log(`${target.name} was punched by ${this.name} and lost 5 health. (${target.name}: ${target.health} health remaining)`);
+    }
+}
+
+class Sensei extends Ninja {
+  constructor(name){
+    super(name);
+    this.health = 200;
+    this.speed = 10;
+    this.strength = 10;
+  }
+
+  speakWisdom() {
+    super.drinkSake();
+    console.log('What one programmer can do in one month, two programmers can do in two months.')
+  }
+}
+
+let ninja1 = new Ninja('Hyabusa');
+let ninja2 = new Ninja('Leon');
+let sensei = new Sensei('Goemon');
+
+ninja1.sayName();
+ninja1.showStats();
+ninja1.drinkSake();
+ninja1.kick(ninja2);
+ninja2.showStats();
+
+sensei.speakWisdom();
+sensei.showStats();
+</script>
