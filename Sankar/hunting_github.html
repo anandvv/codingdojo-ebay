@@ -1,0 +1,10 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$.get("https://api.github.com/users/sankarv-123", displayName)
+// Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+function displayName(data) {
+  console.log(data);
+}
+
+</script>

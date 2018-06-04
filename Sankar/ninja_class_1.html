@@ -1,0 +1,32 @@
+<script>
+
+class Ninja{
+    constructor(name='name_default', health=100, speed=3, strength=3){
+        this.name = name;
+        this.health = health;
+        this.speed = speed;
+        this.strength = strength;
+    }
+
+    sayName(){
+        console.log("My Ninja name is " + this.name);
+
+    }
+    showStats(){
+        console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + this.speed + ", Strength: " + this.strength);
+    }
+
+    drinkSake(){
+        this.health = this.health + 10;
+    }
+
+}
+
+let ninja = new Ninja("Sankar V", 500, 6, 6);
+ninja.sayName();
+ninja.drinkSake();
+ninja.showStats();
+
+
+
+</script>
