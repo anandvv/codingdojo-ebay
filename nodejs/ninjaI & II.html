@@ -1,0 +1,39 @@
+<script>
+    function ninjaConstructor(name, health, speed, strength) {
+        var ninja = {};
+        ninja.name = name;
+        ninja.health = health;
+        ninja.speed = speed;
+        ninja.strength = strength;
+        ninja.sayName = function() {
+            console.log(" My name is " + ninja.name);
+        }
+
+        ninja.showStats = function() {
+            console.log(" My speed is " + ninja.speed + " My health is " + ninja.name + " My strength is " + ninja.strength);
+        }
+
+        ninja.drinkSake = function(){
+            console.log("I am drinking Sake");
+        }
+        ninja.punch = function(target){
+            target.strength = target.strength  - 5;
+            ninja.strength =  ninja.strength + 5;
+            console.log(" After punch, " + ninja.name + " has"+ ninja.strength + " and " + target.name + " has " + target.strength);
+        }
+        ninja.kick = function(target){
+            ninja.strength =  ninja.strength - 15;
+            console.log(" After kick, " + ninja.name + " has"+ ninja.strength + " and " + target.name + " has " + target.strength);
+        }
+        return ninja;
+    }
+    var ninja1 = new ninjaConstructor("Hyabusa",100,100,100);
+    var ninja2 = new ninjaConstructor("Goemon",100,100,100);
+    ninja1.sayName();
+
+    ninja1.showStats();
+
+    ninja1.punch(ninja2);
+    ninja1.kick(ninja2);
+
+</script>

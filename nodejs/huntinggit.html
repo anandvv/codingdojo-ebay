@@ -1,0 +1,13 @@
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<button id="button">click here</button>
+<div></div>
+<script>
+    document.getElementById("button").onclick = function(){
+        $.get("https://api.github.com/users/shelwang", displayName)
+        function displayName(data) {
+        console.log(data.login);
+        }
+
+    }
+    
+</script>
