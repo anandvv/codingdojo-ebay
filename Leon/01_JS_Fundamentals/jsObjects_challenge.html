@@ -1,0 +1,63 @@
+<script>
+
+// challenge 1
+
+let students = [
+    {name: 'Remy', cohort: 'Jan'},
+    {name: 'Genevieve', cohort: 'March'},
+    {name: 'Chuck', cohort: 'Jan'},
+    {name: 'Osmund', cohort: 'June'},
+    {name: 'Nikki', cohort: 'June'},
+    {name: 'Boris', cohort: 'June'}
+];
+
+/* EXPECTED OUTPUT
+  Name: Remy, Cohort: Jan
+  Name: Genevieve, Cohort: March
+  Name: Chuck, Cohort: Jan
+  Name: Osmund, Cohort: June
+  Name: Nikki, Cohort: June
+  Name: Boris, Cohort: June
+*/
+
+students.map( obj => {
+  console.log(['Name:', obj.name, 'Cohort:', obj.cohort].join(' '));
+})
+
+// challenge 2
+
+let users = {
+    employees: [
+        {'first_name':  'Miguel', 'last_name' : 'Jones'},
+        {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+        {'first_name' : 'Nora', 'last_name' : 'Lu'},
+        {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+    ],
+    managers: [
+       {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+       {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+    ]
+ };
+/* EXPECTED OUTPUT
+  EMPLOYEES
+  1 - JONES, MIGUEL - 11
+  2 - BERTSON, ERNIE - 12
+  3 - LU, NORA - 6
+  4 - BARKYOUMB, SALLY - 14
+  MANAGERS
+  1 - CHAMBERS, LILLIAN - 15
+  2 - POE, GORDON - 9
+*/
+
+for(let userType in users) {
+  console.log(userType.toUpperCase())
+  users[userType].map( (currentUser, i) => {
+    let userName = currentUser.last_name + ', ' + currentUser.first_name;
+    let charCount = currentUser.last_name.length + currentUser.first_name.length;
+    let index = i + 1;
+    console.log([index, userName.toUpperCase(), charCount].join(' - '))
+  })
+
+}
+
+</script>
