@@ -1,0 +1,62 @@
+<script>
+
+    let students = [
+        {name: 'Remy', cohort: 'Jan'},
+        {name: 'Genevieve', cohort: 'March'},
+        {name: 'Chuck', cohort: 'Jan'},
+        {name: 'Osmund', cohort: 'June'},
+        {name: 'Nikki', cohort: 'June'},
+        {name: 'Boris', cohort: 'June'}
+    ];
+
+    let users = {
+        employees: [
+            {'first_name':  'Miguel', 'last_name' : 'Jones'},
+            {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+            {'first_name' : 'Nora', 'last_name' : 'Lu'},
+            {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+        ],
+        managers: [
+        {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+        {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+        ]
+    };
+
+    function PrintUsers(users){
+        console.log(users.employees);
+
+        var count = 1;
+
+        console.log("EMPLOYEES")
+        for(index in users.employees){
+            console.log(count + " - " + users.employees[index].last_name.toUpperCase() + ", " 
+                + users.employees[index].first_name.toUpperCase()
+                + " - " + (users.employees[index].last_name.length + users.employees[index].first_name.length)
+            );
+            count++;
+        }
+
+        count = 1
+        console.log("MANAGERS")
+        for(index in users.managers){
+            console.log(count + " - " + users.managers[index].last_name.toUpperCase() + ", " 
+                + users.managers[index].first_name.toUpperCase()
+                + " - " + (users.managers[index].last_name.length + users.managers[index].first_name.length)
+            );
+            count++;
+        }
+
+    }
+
+    function PrintStudents(students){
+        for(student in students){
+            console.log("Name: " + students[student]['name'] + ", Cohort: " + students[student]['cohort']);
+        }
+    }
+
+    //PrintStudents(students);
+    //PrintUsers(users);
+
+ 
+
+</script>
