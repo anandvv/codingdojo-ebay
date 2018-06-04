@@ -1,0 +1,43 @@
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script>
+function callGithub(resolve, reject){
+  let data;
+
+  $.get("https://api.github.com/users/hksekai", (data) => {
+    resolve(data)
+  })
+  .fail(() => {
+    reject();
+  });
+  //return data;
+}
+
+function displayGithub(){
+  console.log('running promise...');
+  //creates promise
+  var data = new Promise(function(resolve,reject){
+    callGithub(resolve,reject); // kind of like a shiny callback
+  });
+  // if promise is successful (keeps me from putting all the logic in the callback)
+  data.then(function(data){
+    let user = data.login;
+    console.log(data, "ASynchronous");
+    $('#data').append(`Welcome, ${user}!`);
+  });
+  data.catch(function(){
+    console.log('failure');
+  })
+  console.log('end');
+}
+</script>
+
+<body>
+  <h1>Hunting Github... push the fancy button to see the data</h1>
+  <br>
+  <button onClick="displayGithub()">Click me</button>
+  <pre id="data"></pre>
+</body>
