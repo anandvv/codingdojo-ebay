@@ -8,18 +8,25 @@
     <script>
         function Ninja(ninjaName){
             self = this;
+
+            //public variables
             this.name = ninjaName;
             this.health = 100;
+            
+            //private variables
             var speed = 3;
             var strength = 3;
+            
             this.sayName = function(){
                 console.log(`Ninja Name: ${self.name}`);
             }
+
             this.showStats = function(){
                 console.log(`Ninja Strength: ${strength}`);
                 console.log(`Ninja Speed: ${speed}`);
                 console.log(`Ninja Health: ${self.health}`);
             }
+            
             this.drinkSake = function(){
                 self.health += 10;
             }
