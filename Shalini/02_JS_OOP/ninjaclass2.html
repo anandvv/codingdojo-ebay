@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja class 2</title>
+</head>
+<body>
+<script>
+    //ES6 way
+    class Ninja {
+        constructor(name, health = 100, speed = 3, strength = 3) {
+            this.name = name;
+            this.health = health;
+            this.speed = speed;
+            this.strength = strength;
+        }
+
+        sayName() {
+            return this.name;
+        }
+
+        showStats() {
+            return this.health;
+        }
+
+        punch(ninja) {
+            ninja.health = ninja.health - 5;
+            console.log(`${ninja.sayName()} was punched by ${this.name} and lost 5 Health!`);
+        }
+
+        kick(ninja) {
+            this.health = ninja.health - ninja.strength * 15;
+            console.log(`${this.name} was kicked by ${ninja.sayName()} and lost 15 Health!`);
+        }
+    }
+    let ninja1 = new Ninja("Shalini", 200);
+    let ninja2 = new Ninja("Sachin", 100);
+    ninja1.sayName();
+    ninja1.showStats();
+    ninja2.punch(ninja1);
+    ninja2.kick(ninja1);
+    console.log(ninja1.showStats());
+    console.log(ninja2.showStats());
+
+</script>
+</body>
+</html>

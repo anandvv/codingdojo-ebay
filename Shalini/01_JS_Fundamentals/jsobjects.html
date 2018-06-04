@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let students = [
+        {name: 'Remy', cohort: 'Jan'},
+        {name: 'Genevieve', cohort: 'March'},
+        {name: 'Chuck', cohort: 'Jan'},
+        {name: 'Osmund', cohort: 'June'},
+        {name: 'Nikki', cohort: 'June'},
+        {name: 'Boris', cohort: 'June'}
+    ];
+
+    for(var i in students) {
+        console.log('Name: ' + students[i].name + "," + "Cohort: " + students[i].cohort);
+    }
+
+    let users = {
+        employees: [
+            {'first_name':  'Miguel', 'last_name' : 'Jones'},
+            {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+            {'first_name' : 'Nora', 'last_name' : 'Lu'},
+            {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+        ],
+        managers: [
+            {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+            {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+        ]
+    };
+
+    console.log("EMPLOYEES");
+    for(var j in users.employees) {
+        let last = users.employees[j].last_name;
+        let first = users.employees[j].first_name;
+        console.log(j + "-" + constructName(last, first) + " - " + getLength(last, first));
+    }
+
+    console.log("MANAGERS");
+    for(var m in users.managers) {
+        let last = users.managers[m].last_name;
+        let first = users.managers[m].first_name;
+        console.log(j + "-" + constructName(last, first) + " - " + getLength(last, first));
+    }
+
+    function constructName(last, first) {
+        return last.toUpperCase() + "," + first.toUpperCase();
+    }
+
+    function getLength(last, first) {
+        return last.length + first.length;
+    }
+
+    //using foreach
+    for(key in keys) {
+        users[key].foreach(user, idx) => {
+            console.log('${idx + 1} - ${user.}')
+        }
+    }
+</script>
+</body>
+</html>
