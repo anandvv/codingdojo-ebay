@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Class 2</title>
+    <script>
+        function Ninja(name){
+            this.name=name;
+            this.health=10;
+            this.speed=3;
+            this.strength=3;
+        }
+
+        Ninja.prototype.sayName=function(){
+            console.log('My ninja name is '+this.name);
+        }
+        Ninja.prototype.showStats=function(){
+            for(var key in this){
+                console.log(key+":"+this[key]);
+            }
+        }
+        Ninja.prototype.drinkSake=function(){
+            this.health=this.health+10;
+        }
+
+        var ninja1 = new Ninja("Hyabusa");
+        ninja1.sayName();
+        // -> "My ninja name is Hyabusa!"
+        ninja1.showStats();
+
+
+        Ninja.prototype.punch=function(obj){
+        if(obj instanceof Ninja){
+            obj.health=obj.health-5;
+            console.log(this.name+' was punched by'+obj.name + 'and lost 5 Health!');
+        }
+        }
+
+        Ninja.prototype.kick=function(obj){
+            if(obj instanceof Ninja){
+                let totalHealthLost = this.strength * 15;
+            obj.health=obj.health-totalHealthLost;
+            console.log(obj.name+ ' was kicked by'+this.name+' and lost 15 Health!');
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

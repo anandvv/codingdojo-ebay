@@ -1,0 +1,37 @@
+<script>
+    let users = {
+        employees: [
+            {'first_name':  'Miguel', 'last_name' : 'Jones'},
+            {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+            {'first_name' : 'Nora', 'last_name' : 'Lu'},
+            {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+        ],
+        managers: [
+        {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+        {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+        ]
+    };
+ 
+ //Expected output
+//EMPLOYEES
+//1 - JONES, MIGUEL - 11
+//2 - BERTSON, ERNIE - 12
+//3 - LU, NORA - 6
+//4 - BARKYOUMB, SALLY - 14
+//MANAGERS
+//1 - CHAMBERS, LILLIAN - 15
+//2 - POE, GORDON - 9
+
+ function printNames(users){
+   for(let key in users){
+	  console.log(key);
+	  let currUsers = users[key];
+	  currUsers.forEach((obj,index) => {
+         let firstName = 	obj.first_name.toUpperCase();
+		 let lastName = obj.last_name.toUpperCase();
+		 let total = firstName.length() +lastName.length();
+		 console.log(index+"-"+firstName+","+lastName+"-"+total);
+		});
+   }
+ }
+</script>

@@ -1,0 +1,25 @@
+<script>
+    let students = [
+        {name: 'Remy', cohort: 'Jan'},
+        {name: 'Genevieve', cohort: 'March'},
+        {name: 'Chuck', cohort: 'Jan'},
+        {name: 'Osmund', cohort: 'June'},
+        {name: 'Nikki', cohort: 'June'},
+        {name: 'Boris', cohort: 'June'}
+    ];
+//Expected output
+//Name: Remy, Cohort: Jan
+//Name: Genevieve, Cohort: March
+//Name: Chuck, Cohort: Jan
+//Name: Osmund, Cohort: June
+//Name: Nikki, Cohort: June
+//Name: Boris, Cohort: June
+
+function printNames(users){
+   users.forEach((obj,index) => {
+     for(let key in obj){
+		console.log(key+":"+obj[key]);
+	 }
+   });
+ }
+</script>
