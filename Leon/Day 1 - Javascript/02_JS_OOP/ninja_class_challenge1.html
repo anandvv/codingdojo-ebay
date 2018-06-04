@@ -1,0 +1,64 @@
+<script>
+function Ninja(name) {
+    this.name = name;
+    this.health = 100;
+    let speed = 3;
+    let strength = 3;
+
+    this.getSpeed = function() {
+      return speed;
+    }
+
+    this.getStrength = function() {
+      return strength;
+    }
+
+    this.receiveDamage = function(damage) {
+      this.health = this.health - damage;
+    }
+}
+
+Ninja.prototype.sayName = function() {
+  console.log(`My name is ${this.name}!`)
+}
+
+Ninja.prototype.showStats = function() {
+  console.log(`Name: ${this.name}\nHealth: ${this.health}\nStrength: ${this.getStrength()}\nSpeed: ${this.getSpeed()}`)
+}
+
+Ninja.prototype.drinkSake = function() {
+  console.log(`Drank some sake... now I have ${this.health + 10} health...`)
+}
+
+Ninja.prototype.kick = function(target) {
+
+  if(!(target instanceof Ninja)){
+    console.log('Error! You did not input a Ninja as the target');
+    return;
+  }
+  target.receiveDamage(15);
+  console.log(`${target.name} was kicked by ${this.name} and lost 15 health. (${target.name}: ${target.health} health remaining)`);
+}
+
+Ninja.prototype.punch = function(target) {
+  if(!(target instanceof Ninja)){
+    console.log('Error! You did not input a Ninja as the target');
+    return;
+  }
+  target.receiveDamage(5);
+  console.log(`${target.name} was punched by ${this.name} and lost 5 health. (${target.name}: ${target.health} health remaining)`);
+}
+
+let ninja1 = new Ninja('Hyabusa');
+let ninja2 = new Ninja('Leon');
+
+ninja1.sayName();
+ninja1.showStats();
+ninja1.drinkSake();
+
+ninja1.kick(ninja2);
+ninja2.punch(ninja1);
+
+ninja1.kick("Leon");
+
+</script>

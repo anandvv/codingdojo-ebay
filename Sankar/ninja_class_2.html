@@ -1,0 +1,50 @@
+<script>
+
+    class Ninja{
+        constructor(name='name_default', health=100, speed=3, strength=3){
+            this.name = name;
+            this.health = health;
+            this.speed = speed;
+            this.strength = strength;
+        }
+    
+        sayName(){
+            console.log("My Ninja name is " + this.name);
+    
+        }
+        showStats(){
+            console.log("Name: " + this.name + ", Health: " + this.health + ", Speed: " + this.speed + ", Strength: " + this.strength);
+        }
+    
+        drinkSake(){
+            this.health = this.health + 10;
+        }
+
+        punch(ninja){
+            
+            ninja.health = ninja.health - 5;
+            console.log(`${ninja.name} was punched by ${this.name} and lost 5 Health!`);
+            
+        }
+
+        kick(ninja){
+            let thd = 15 * this.strength;
+            ninja.health = ninja.health - thd;
+            console.log(`${ninja.name} was kicked by ${this.name} and lost ${thd} Health!`);
+
+        }
+    
+    }
+    
+    let ninja_sankar = new Ninja("Sankar V");
+    let ninja_saketh = new Ninja("Saketh");
+    console.log(`Health of ${ninja_saketh.name}: ${ninja_saketh.health}`);
+    ninja_sankar.punch(ninja_saketh);
+    ninja_sankar.kick(ninja_saketh);
+    console.log(`Health of ${ninja_saketh.name}: ${ninja_saketh.health}`);
+
+   
+    
+    
+    
+    </script>

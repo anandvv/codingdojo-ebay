@@ -1,0 +1,54 @@
+<script>
+
+let students = [
+    {name: 'Remy', cohort: 'Jan'},
+    {name: 'Genevieve', cohort: 'March'},
+    {name: 'Chuck', cohort: 'Jan'},
+    {name: 'Osmund', cohort: 'June'},
+    {name: 'Nikki', cohort: 'June'},
+    {name: 'Boris', cohort: 'June'}
+    ]
+
+    function find (students) {
+        for(student in students) {
+        console.log("Name: " + students[student]['name'] +", Cohort: " +  students[student]['cohort']);
+        } 
+    }
+    find(students);
+ 
+    let users = {
+    employees: [
+        {'first_name':  'Miguel', 'last_name' : 'Jones'},
+        {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+        {'first_name' : 'Nora', 'last_name' : 'Lu'},
+        {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+    ],
+    managers: [
+       {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+       {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+    ]
+ };
+
+    function find2 (users) {
+        var num = 1;
+        console.log("EMPLOYEES");
+        var first_name;
+        var second_name;
+        for(employee in users.employees) {
+             first_name = users.employees[employee]['last_name'];
+             second_name = users.employees[employee]['first_name'];
+        console.log(num + " " + first_name + ", " + second_name + " - " + (first_name.length + second_name.length));
+        num++;
+        } 
+        num = 1;
+        console.log("MANAGERS");
+        for(manager in users.managers) {
+            first_name = users.managers[manager]['last_name'];
+             second_name = users.managers[manager]['first_name'];
+             console.log(num + " " + first_name + ", " + second_name + " - " + (first_name.length + second_name.length));
+            num++;
+        } 
+    }
+    find2(users);
+
+</script>
