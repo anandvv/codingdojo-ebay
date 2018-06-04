@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Class 1</title>
+    <script>
+        function Ninja(name){
+        this.name=name;
+        this.health=10;
+        this.speed=3;
+        this.strength=3;
+        }
+
+        Ninja.prototype.sayName=function(){
+            console.log('My ninja name is '+this.name);
+        }
+        Ninja.prototype.showStats=function(){
+            for(var key in this){
+                console.log(key+":"+this[key]);
+            }
+        }
+        Ninja.prototype.drinkSake=function(){
+            this.health=this.health+10;
+        }
+
+        var ninja1 = new Ninja("Hyabusa");
+        ninja1.sayName();
+        // -> "My ninja name is Hyabusa!"
+        ninja1.showStats();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

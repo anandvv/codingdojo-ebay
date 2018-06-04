@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja class 1</title>
+</head>
+<body>
+<script>
+    //ES6 way
+    class Ninja {
+        constructor(name, health = 100, speed = 3, strength = 3) {
+            this.name = name;
+            this.health = health;
+            this.speed = speed;
+            this.strength = strength;
+        }
+
+        sayName() {
+            console.log(`My Ninja name is ${this.name}`);
+        }
+
+        showStats() {
+            console.log(`Name: ${this.name}, Health: ${this.health}, Speed: ${this.speed}, Strength: ${this.strength}`);
+        }
+
+        drinkSake() {
+            this.health = this.health + 10;
+        }
+
+    }
+    let ninja1 = new Ninja("Shalini", 200);
+    ninja1.sayName();
+    ninja1.showStats();
+    ninja1.drinkSake();
+    ninja1.showStats();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<script>
+    class  Ninja {
+        constructor(name) {
+            this.name = name;
+            this.health = 100;
+            this.strength = 3;
+            this.speed = 3;
+        } 
+
+        sayName() {
+            console.log("My name is " + this.name);
+        }
+        showStats() {
+            console.log("My name is " + this.name + " and my health is " + this.health + " and my speed is " + this.speed + " my strength is " + this.strength);
+        }
+        drinkSake() {
+            this.health = this.health + 10;
+            console.log(" After drink, my health is " + this.health);
+        }
+
+        punch (target){
+            if(target instanceof Ninja) {
+                target.health = target.health  - 5;
+                console.log(" After " + this.name + " punched " + target.name +", " + this.name + " has "+ this.health + " health and " + target.name + " has " + target.health);
+            }
+        }
+        kick (target){
+            if(target instanceof Ninja) {
+                this.health =  this.health - 15;
+                console.log(" After " + this.name + "kicked, " + this.name + " has "+ this.health + " health and " + target.name + " has " + target.health);
+            }
+        }
+    }
+    var ninja1 = new Ninja("Suku");
+    var ninja2 = new Ninja("Megu");
+    ninja1.sayName();
+    ninja1.showStats();
+    ninja1.drinkSake();
+
+    ninja2.sayName();
+    ninja2.showStats();
+    ninja2.drinkSake();
+
+    ninja1.kick(ninja2);
+    ninja1.punch(ninja2);
+
+    ninja2.kick(ninja1);
+    ninja2.punch(ninja1);
+
+    class Sensei extends Ninja {
+        constructor(name, health, strength, speed, wisdom) {
+            super(name, health, strength, speed);
+            this.wisdom = 10;
+        }
+        speakWisdom() {
+            this.drinkSake();
+        }
+    }
+    var sensei = new Sensei("Master Splinter");
+    sensei.showStats();
+    sensei.speakWisdom();
+    sensei.showStats();
+
+</script>

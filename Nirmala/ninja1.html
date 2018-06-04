@@ -1,0 +1,31 @@
+<script>
+function Ninja(name, health='100', speed='3', strength='3') {
+    this.name=name;
+    this.health=health;
+    this.speed=speed;
+    this.strength=strength;
+}    
+
+//adding a method to the cat prototype
+Ninja.prototype.sayName = function() {
+    console.log('my Ninja name is '+ this.name);
+};
+
+//showStats() - This should show the Ninja's name, strength, speed, and health.
+// -> "Name: Hayabusa, Health: 100, Speed: 3, Strength: 3"
+Ninja.prototype.showStats = function() {
+    console.log('Name: '+ this.name + ', Health: '+this.health + ', Speed: ' + this.speed + ', Strength: ' + this.strength);
+};
+
+//drinkSake() - This should add +10 Health to the Ninja
+Ninja.prototype.drinkSake = function() {
+    console.log('New health: ' + (parseInt(this.health)+10));
+};
+
+var ninja1 = new Ninja("Hyabusa");
+ninja1.sayName();
+
+ninja1.showStats();
+
+ninja1.drinkSake();
+</script>

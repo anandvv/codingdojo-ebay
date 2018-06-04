@@ -1,0 +1,96 @@
+<script>
+// 1
+console.log(hello);  // hello is undefined
+var hello = 'world';
+
+var hello;
+console.log(hello);
+hello = 'world';
+
+
+// 2
+var needle = 'haystack';
+test();
+function test(){
+	var needle = 'magnet';
+	console.log(needle); // magnet (var scoped to function)
+}
+
+var needle;
+needle = 'haystack';
+test();
+function(test) {
+  var needle;
+  needle = 'magnet';
+  console.log(needle)
+}
+
+// 3
+var brendan = 'super cool';
+function print(){ // print function is never called
+	brendan = 'only okay';
+	console.log(brendan); // only okay (if function was called)
+}
+console.log(brendan); // super cool
+
+// 4
+var food = 'chicken';
+console.log(food); // chicken
+eat();
+function eat(){
+	food = 'half-chicken';
+	console.log(food); // half chicken
+	var food = 'gone'; // food scoped to eat function but never used pass this line
+}
+
+// 5
+mean(); // mean is not defined
+console.log(food); // undefined
+var mean = function() {
+	food = "chicken";
+	console.log(food); // chicken
+	var food = "fish";
+	console.log(food); // fish
+}
+console.log(food); // undefined
+
+// 6
+console.log(genre); // undefined
+var genre = "disco";
+rewind();
+function rewind() {
+	genre = "rock";
+	console.log(genre); // rock
+	var genre = "r&b";
+	console.log(genre); // r&b
+}
+console.log(genre); // disco
+
+// 7
+dojo = "san jose";
+console.log(dojo); // san jose
+learn();
+function learn() {
+	dojo = "seattle";
+	console.log(dojo); // seattle
+	var dojo = "burbank"; // burbank
+	console.log(dojo);
+}
+console.log(dojo); // san jose
+
+// 8
+console.log(makeDojo("Chicago", 65)); // {name: 'Chicago', hiring: true}
+console.log(makeDojo("Berkeley", 0)); // // cannot assign string to const object.
+function makeDojo(name, students){
+        const dojo = {};
+        dojo.name = name;
+        dojo.students = students;
+        if(dojo.students > 50){
+            dojo.hiring = true;
+        }
+        else if(dojo.students <= 0){
+            dojo = "closed for now";
+        }
+        return dojo;
+}
+</script>
