@@ -7,20 +7,20 @@ var server = http.createServer(function (request, response){
     // see what URL the clients are requesting:
     console.log('client request URL: ', request.url);
     // this is how we do routing:
-    if(request.url === '/') {
-        fs.readFile(__dirname + '/index.html', 'utf8', function (errors, contents){
-            response.writeHead(200, {'Content-Type': 'text/html'});  // send data about response
-            response.write(contents);  //  send response body
-            response.end(); // finished!
-        });
-    } else if(request.url === '/home') {
-        // contents = fs.readFile('index.html', 'utf8'); <-- the java way
-        fs.readFile(__dirname +'/index.html', 'utf8', function (errors, contents){
+    if(request.url === '/cars') {
+        fs.readFile(__dirname + '/cars.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/html'});  // send data about response
             response.write(contents);  //  send response body
             response.end(); // finished!
         });
     }
+    else if(request.url === '/car1.jpg') {
+        fs.readFile('/car1.jpg', function(err, data) {
+            response.writeHead(200, {'Content-Type': 'image/jpeg'});
+            response.end(data); // Send the file data to the browser.
+        });
+    }
+    
     // request didn't match anything:
     else {
         response.writeHead(404);
