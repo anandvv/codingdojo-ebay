@@ -1,0 +1,19 @@
+<html>
+    <h1><%=catInfo.name%></h1>
+    <p>
+        <img src="<%= catInfo.url %>">
+    </p>
+    <p>
+        Favorite Food: <%=catInfo.favorite_food%>
+    </p>
+    <p>
+        Sleeping Spots: <br/>
+        <ul>
+        <% for(index in catInfo.sleeping_spots) { %>
+            <li>
+            <%= catInfo.sleeping_spots[index] %>
+            </li>
+        <% } %>
+        </ul>
+    </p>
+</html>
