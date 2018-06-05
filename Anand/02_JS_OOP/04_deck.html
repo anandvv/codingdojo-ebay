@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Class 1</title>
+    <script>
+        class Deck{
+            constructor(){
+                this.cards = [
+                    "Ace of Diamonds", "2 of Diamonds", "3 of Diamonds", 
+                    "4 of Diamonds", "5 of Diamonds", "6 of Diamonds", 
+                    "7 of Diamonds", "8 of Diamonds", "9 of Diamonds", 
+                    "10 of Diamonds", "Jack of Diamonds", 
+                    "Queen of Diamonds", "King of Diamonds",
+                    "Ace of Hearts", "2 of Hearts", "3 of Hearts", 
+                    "4 of Hearts", "5 of Hearts", "6 of Hearts", 
+                    "7 of Hearts", "8 of Hearts", "9 of Hearts", 
+                    "10 of Hearts", "Jack of Hearts", 
+                    "Queen of Hearts", "King of Hearts",
+                    "Ace of Clubs", "2 of Clubs", "3 of Clubs", 
+                    "4 of Clubs", "5 of Clubs", "6 of Clubs", 
+                    "7 of Clubs", "8 of Clubs", "9 of Clubs", 
+                    "10 of Clubs", "Jack of Clubs", 
+                    "Queen of Clubs", "King of Clubs",
+                    "Ace of Spades", "2 of Spades", "3 of Spades", 
+                    "4 of Spades", "5 of Spades", "6 of Spades", 
+                    "7 of Spades", "8 of Spades", "9 of Spades", 
+                    "10 of Spades", "Jack of Spades", 
+                    "Queen of Spades", "King of Spades"
+                    ];
+            }
+
+            shuffle(){
+                //do this a random number of times between 100 and 200 times
+                for(let i=0; i<100; i++){
+                    //get two random numbers between 0 and 52
+                    let pos1 = Math.ceil(Math.random() * 51);
+                    let pos2 = Math.ceil(Math.random() * 51);
+
+                    //swap the two numbers    
+                    let temp = this.cards[pos1];
+                    this.cards[pos1] = this.cards[pos2];
+                    this.cards[pos2] = temp;
+                }
+            }
+
+            reset(){
+                this.cards = [
+                    "Ace of Diamonds", "2 of Diamonds", "3 of Diamonds", 
+                    "4 of Diamonds", "5 of Diamonds", "6 of Diamonds", 
+                    "7 of Diamonds", "8 of Diamonds", "9 of Diamonds", 
+                    "10 of Diamonds", "Jack of Diamonds", 
+                    "Queen of Diamonds", "King of Diamonds",
+                    "Ace of Hearts", "2 of Hearts", "3 of Hearts", 
+                    "4 of Hearts", "5 of Hearts", "6 of Hearts", 
+                    "7 of Hearts", "8 of Hearts", "9 of Hearts", 
+                    "10 of Hearts", "Jack of Hearts", 
+                    "Queen of Hearts", "King of Hearts",
+                    "Ace of Clubs", "2 of Clubs", "3 of Clubs", 
+                    "4 of Clubs", "5 of Clubs", "6 of Clubs", 
+                    "7 of Clubs", "8 of Clubs", "9 of Clubs", 
+                    "10 of Clubs", "Jack of Clubs", 
+                    "Queen of Clubs", "King of Clubs",
+                    "Ace of Spades", "2 of Spades", "3 of Spades", 
+                    "4 of Spades", "5 of Spades", "6 of Spades", 
+                    "7 of Spades", "8 of Spades", "9 of Spades", 
+                    "10 of Spades", "Jack of Spades", 
+                    "Queen of Spades", "King of Spades"
+                ];
+            }
+
+            deal(){
+                if(this.cards.length > 0){
+                    let pos1 = Math.ceil(Math.random() * (this.cards.length - 1));
+                    let temp = this.cards[pos1];
+                    this.cards.splice(pos1, 1);
+                    return temp;
+                }
+                else{
+                    console.log("Empty deck!")                    
+                }
+            }
+
+            display(){
+                if(this.cards.length <= 0) return;
+
+                console.log(`Deck size is ${this.cards.length}`)
+                for(let i=0; i<this.cards.length; i++){
+                    console.log(this.cards[i]);
+                }
+            }
+        }
+
+        class Player{
+            constructor(playerName){
+                this.name = playerName;
+                this.hand = [];
+            }
+
+            takeCard(deck){
+                this.hand.push(deck.deal());
+            }
+
+            discardCard(pos){
+                this.hand.splice(pos, 1);
+            }
+
+            display(){
+                console.log(`${this.name}'s hand:`)
+                if(this.hand.length > 0){
+                    for(let i=0; i<this.hand.length; i++){
+                        console.log(this.hand[i]);
+                    }
+                }
+            }
+        }
+
+        const deck1 = new Deck();
+        deck1.shuffle();
+
+        const player1 = new Player("Anand");
+        const player2 = new Player("Siddharth");
+        const player3 = new Player("Anahita");
+        const player4 = new Player("Pats");
+
+        for(let i=0; i< 3; i++){
+            player1.takeCard(deck1);
+            player2.takeCard(deck1);
+            player3.takeCard(deck1);
+            player4.takeCard(deck1);
+        }
+
+        //deck1.display();
+
+        player1.display();
+        player2.display();
+        player3.display();
+        player4.display();
+
+        player1.discardCard(2);
+        player2.discardCard(1);
+        player3.discardCard(0);
+        player4.discardCard(1);
+
+        player1.display();
+        player2.display();
+        player3.display();
+        player4.display();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

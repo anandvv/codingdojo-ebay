@@ -1,0 +1,63 @@
+<script>
+    
+function Ninja(name, health='100', speed='3', strength='3') {
+    this.name=name;
+    this.health=health;
+    this.speed=speed;
+    this.strength=strength;
+}    
+
+Ninja.prototype.sayName = function() {
+    console.log('my Ninja name is '+ this.name);
+};
+
+//showStats() - This should show the Ninja's name, strength, speed, and health.
+// -> "Name: Hayabusa, Health: 100, Speed: 3, Strength: 3"
+Ninja.prototype.showStats = function() {
+    console.log('Name: '+ this.name + ', Health: '+this.health + ', Speed: ' + this.speed + ', Strength: ' + this.strength);
+};
+
+//drinkSake() - This should add +10 Health to the Ninja
+Ninja.prototype.drinkSake = function() {
+    console.log('New health of ' + this.name +' is: '+ (parseInt(this.health)+10));
+};
+
+Ninja.prototype.punch = function(ninja) {
+    // Add a new method to Ninja called .punch(). 
+    //This method will take another Ninja instance and subtract 5 Health from the Ninja we passed in. 
+    //Your .punch() should display a console message like the below example.
+    // -> "Goemon was punched by Bill Gates and lost 5 Health!"
+    if(ninja instanceof Ninja) {
+        console.log(ninja.name + ' was punched by ' + this.name + ' and lost 5 Health! His new health is: ' + (parseInt(ninja.health)-5));
+    }    
+};
+
+Ninja.prototype.kick = function(ninja) {
+//Now add a method to your Ninja class called .kick(). Kick will subtract 15 Health for each point of Strength the calling Ninja has, 
+//and like .punch() will take another Ninja instance.
+    if(ninja instanceof Ninja) {
+
+        var lost = (this.strength)*15;
+        var redNinjahealth = parseInt(ninja.health) - parseInt(lost)
+        //"Bill Gates was kicked by Goemon and lost 15 Health!"
+        console.log('redNinja ' + ninja.name + ' was kicked by ' + this.name + ' and lost ' + lost + ' Health!');
+        console.log('redninja ' + ninja.name + ' new health: ' + redNinjahealth);
+    }
+};
+
+var ninja1 = new Ninja("Hyabusa");
+ninja1.sayName();
+
+ninja1.showStats();
+
+ninja1.drinkSake();
+
+var blueNinja = new Ninja("Goemon");
+blueNinja.strength = 1;
+var redNinja = new Ninja("Bill Gates");
+redNinja.punch(blueNinja);
+
+blueNinja.kick(redNinja);
+
+
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Class 2</title>
+    <script>
+        class Ninja_es6 {
+            constructor(name) {
+                    this.name = name;
+                    this.health=10;
+                    this.speed=3;
+                    this.strength=3;
+            }
+            sayName() {
+                console.log(this.name);
+            }
+            showStats(){
+                for(var key in this){
+                    console.log(key+":"+this[key]);
+                }
+            }
+            drinkSake(){
+                this.health=this.health+10;
+            }
+            punch(obj){
+                if(obj instanceof Ninja_es6){
+                obj.health=obj.health-5;
+                console.log(`${this.name} was punched by ${obj.name} and lost 5 Health!`);
+                }
+            }
+            kick(obj){
+                if(obj instanceof Ninja_es6){
+                    let totalHealthLost = this.strength * 15;
+                obj.health=obj.health-totalHealthLost;
+                console.log(`${obj.name} was kicked by ${this.name} and lost 15 Health!`);
+                }
+            }
+} 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<script>
+
+let users = {
+    employees: [
+        {'first_name':  'Miguel', 'last_name' : 'Jones'},
+        {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+        {'first_name' : 'Nora', 'last_name' : 'Lu'},
+        {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+    ],
+    managers: [
+       {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+       {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+    ]
+ };
+
+console.log("EMPLOYEES");
+var emps = users.employees;
+var mgrs = users.managers;
+
+for(index in emps) {
+    console.log(parseInt(index)+1 + " - " + emps[index].last_name.toUpperCase() + ", " + emps[index].first_name.toUpperCase() + " - "+ (emps[index].last_name.length+emps[index].first_name.length));
+}
+for(index in mgrs) {
+    console.log(parseInt(index)+1 + " - " + mgrs[index].last_name.toUpperCase() + ", " + mgrs[index].first_name.toUpperCase() + " - "+ (mgrs[index].last_name.length+mgrs[index].first_name.length));
+}
+
+//for (key in users) {
+//    console.log(key);
+//    console.log(users[key]);
+//    users[key].foreach( (user, idx) => {
+//        console.log(user);
+//        console.log('{$idx+1}' - ${user.first_name.toUpperCase()});
+//    }
+//}
+</script>
