@@ -1,0 +1,29 @@
+<html>
+<head>
+  <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/javascripts/index.js"></script>
+</head>
+<body>
+  <div class="container">
+    <a href="/cats">Cats</a>
+    <a href="/cars">Cars</a>
+    <a href="/cars/new">New Car</a>
+    <h1>Add a new Car!</h1>
+    <p>Welcome, <%= user %> </p>
+    <p>Please fill in this form to add a new car.</p>
+    <hr>
+
+    <label for="make"><b>Car Make</b></label>
+    <input type="text" placeholder="Car Maker (i.e. Subaru)" id="make" name="make" required>
+
+    <label for="model"><b>Car Model</b></label>
+    <input type="text" placeholder="BRZ" name="model" id="model" required>
+
+    <label for="year"><b>Year of car</b></label>
+    <input type="text" placeholder="2017" name="year" id="year" required>
+    <hr>
+    <button id="submit" type="submit" class="registerbtn">Register</button>
+  </div>
+</body>
+</html

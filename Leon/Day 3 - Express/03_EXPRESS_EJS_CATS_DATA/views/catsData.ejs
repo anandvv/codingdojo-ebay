@@ -1,0 +1,29 @@
+<html>
+<head>
+  <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 style="flex:1">Details Page for <%= catData.name %></h1>
+      <a href="/cats">Cats</a>
+    </div>
+    <h1> <%= catData.name %> </h1>
+    <div class="catDetails">
+      <img src=<%= catData.route %> />
+    </div>
+    <div class="catDetailRow">
+      <p><strong>Favorite Food:</strong> <%= catData.favorite_food %> </p>
+    </div>
+    <div class="catDetailRow">
+      <p><strong>Age:</strong> <%= catData.age %> </p>
+    </div>
+    <div class="catDetailRow">
+      <p><strong>Sleeping Spots:</strong></p>
+      <% for (var x in catData.sleeping_spots) { %>
+        <p><%= catData.sleeping_spots[x] %></p>
+    <% } %>
+    </div>
+  </div>
+</body>
+</html>

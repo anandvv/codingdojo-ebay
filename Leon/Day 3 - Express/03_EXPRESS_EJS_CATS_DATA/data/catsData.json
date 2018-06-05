@@ -1,0 +1,34 @@
+[
+  {
+    "name": "GrumpyCat",
+    "favorite_food": "spaghetti",
+    "age": 3,
+    "sleeping_spots": [
+      "under the bed",
+      "in a sunbeam"
+    ],
+    "route": "/images/cat1.jpg",
+    "index": 0
+  },
+  {
+    "name": "JudgingCat",
+    "favorite_food": "Escargots de Bourgogne",
+    "age": 7,
+    "sleeping_spots": [
+      "On expensive surfaces",
+      "In his cat mansion"
+    ],
+    "route": "/images/cat2.jpg",
+    "index": 1
+  },
+  {
+    "name": "CuriousCat",
+    "favorite_food": "fruit loops",
+    "age": 1,
+    "sleeping_spots": [
+      "Basically anywhere"
+    ],
+    "route": "/images/cat3.jpg",
+    "index": 2
+  }
+]
