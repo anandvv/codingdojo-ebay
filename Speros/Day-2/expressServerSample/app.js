@@ -2,17 +2,12 @@
 var express = require("express");
 var app = express();
 
-
 // EJS TEMPLATING SETUP
 app.set('views', __dirname + '/views'); 
 app.set('view engine', 'ejs');
 
-
 // STATIC
 app.use(express.static(__dirname + "/static"));
-
-
-
 
 // ROUTES
 app.get('/', (request, response) => {
@@ -26,11 +21,9 @@ app.get('/sample', (request, response) => {
         {name: "Andrew", email: "andrew@codingdojo.com"}
     ];
     response.render('sample', {users: userData} );
-
 })
 
 // SERVER
 app.listen(8000, function() {
   console.log("listening on port 8000");
 })
-
