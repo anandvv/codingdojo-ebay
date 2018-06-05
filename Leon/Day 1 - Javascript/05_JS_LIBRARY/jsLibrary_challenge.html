@@ -1,14 +1,30 @@
 <script>
 
 var _ = {
-   map: function() {
-     //code here;
+   map: function(arr, predicate) {
+     let newOutput = [];
+
+     arr.forEach((item) => {
+       newOutput.push(predicate(item));
+     });
+     return newOutput;
    },
-   reduce: function() {
-     // code here;
+   reduce: function(arr, predicate) {
+     let output = 0;
+     arr.forEach(item => {
+         output = predicate(output, item);
+     })
+     return output;
    },
    find: function(arr, predicate) {
-
+     let output;
+     for(let i in arr){
+       if(predicate(arr[i])){
+         output = arr[i];
+         return output;
+       }
+     }
+      return output;
    },
    filter: function(arr, predicate) {
      let filtered = [];
@@ -19,13 +35,32 @@ var _ = {
      })
      return filtered;
    },
-   reject: function() {
-     // code here;
+   reject: function(arr, predicate) {
+     let rejected = [];
+     arr.forEach((item) => {
+       if(!predicate(item)) {
+         rejected.push(item)
+       }
+     })
+     return rejected;
    }
  }
 // you just created a library with 5 methods!
 
-var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
-console.log(evens); // if things are working right, this will return [2,4,6].
+
+var filter = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+console.log(`Filtered even values: ${filter}`); // if things are working right, this will return [2,4,6].
+
+var find = _.find([1,2,3,4,5,6], function(num){ return num % 2 == 0; })
+console.log(`Find first even value: ${find}`);
+
+var map = _.map([1,2,3], function(num){ return num * 2; });
+console.log(`Map to double all values: ${map}`);
+
+var reduce = _.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0);
+console.log(`Reduce array to sum of values: ${reduce}`);
+
+var reject = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+console.log(`Reject even values: ${reject}`);
 
 </script>
