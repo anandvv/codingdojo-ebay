@@ -27,6 +27,16 @@
                 socket.emit('gamma')
             })
 
+            // $("#box").html("<h1>Hello wrold" + obj.name + "hello</h1>")
+
+            $('#myForm').submit(function(){
+                socket.emit('alpha', {
+                    first_name: $('#first_name').val(),
+                    last_name: $('#last_name').val(),
+                })
+                return false;
+            })
+
          })
     </script>
 </head>
@@ -35,5 +45,11 @@
     <button id='callServerButtonAlpha'>Call Server Alpha</button>
     <button id='callServerButtonBeta'>Call Server Beta</button>
     <button id='callServerButtonGamma'>Call Server Gamma</button>
+
+    <form id='myForm'>
+        <input type="text" id="first_name">
+        <input type="text" id="last_name">
+        <input type="submit">
+    </form>
 </body>
 </html>
