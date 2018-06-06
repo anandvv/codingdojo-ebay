@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cats page</title>
+    <link rel="stylesheet" href="/css/cats.css"/>
+</head>
+
+<body>
+ <div class="wrapper">
+    <% for(var i=0; i<catData.length; i++) {%>
+    <a href="<%= catData[i].endpoint %>">
+        <img src="/images/<%= catData[i].image%>"/>
+    </a>
+        <% if(showInfo){ %>
+            <ul>
+                <li><span><Name</span><span><%= catData[i].name %></span></li>
+                <li><span><Favorite Food</span><span><%= catData[i].favoriteFood %></span></li>
+                <li><span><Age</span><span><%= catData[i].age %></span></li>
+                <li><span><Sleeping Spot</span><span><%= catData[i].sleepingSpot %></span></li>
+            </ul>
+        <% } %>
+    <% } %>
+ </div>   
+
+</body>
+
+</html>

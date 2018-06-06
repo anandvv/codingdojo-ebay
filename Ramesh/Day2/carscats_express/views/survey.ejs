@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Form</title>
+<link rel="stylesheet"  href="/css/survey.css"/>
+</head>
+
+<body>
+    <% if(showResult){ %>
+        <div class="result">
+                <div>Submitted Information</div>
+                <div>Location:<%= data.location%></div>
+                <div>Language:<%= data.language%></div>
+                <div>Comments:<%= data.comments%></div>
+                <a href="/survey">Go Back</a>
+        </div>
+    <% }else{  %>
+        <form action='/result' method='post'>
+            <div>Your name: <input type='text' name='name'></div>
+            <div>Dojo Location: <select name="location">
+                    <option>Mountain View</option>
+                    <option>San Jose</option>
+                    <option>Sunnyvale</option>
+                </select></div>
+            <div>Favorite Language: <select name="language">
+                    <option>Javascript</option>
+                    <option>Java</option>
+                    <option>NodeJs</option>
+                </select></div>
+            <div>Comments(Optional)<textbox name="comments"/></div>                 
+            <input type='submit' value='create user'>
+        </form>
+    <% } %>
+        
+</body>
+
+</html>
