@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Form</title>
+<link rel="stylesheet"  href="/css/survey.css"/>
+<style>
+    .result {
+        display: none;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    <script type ="text/javascript">
+    $(document).ready(function (){
+
+        var socket = io(); 
+
+        socket.on('epicCountUpdate', function (response) { //4
+            $('#count').html(response.epicCount);
+        });
+
+
+        // process the form
+        $('#epic').click(function(event) {
+            socket.emit('epicClick');
+        });
+         // process the form
+         $('#epicReset').click(function(event) {
+            socket.emit('epicReset');
+        });
+    })
+    </script>
+</head>
+
+<body>
+            <div>Epic Count:<span id="count"><%= epicCount %></span></div>
+            <button id="epic">Epic Click</button>
+            <button id="epicReset">Epic Reset</button>
+</body>
+
+</html>

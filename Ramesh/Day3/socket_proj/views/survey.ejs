@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Form</title>
+<link rel="stylesheet"  href="/css/survey.css"/>
+<style>
+    .result {
+        display: none;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    <script type ="text/javascript">
+    $(document).ready(function (){
+
+        var socket = io(); //1
+    
+        socket.on('result', function (response) { //4
+            createResult(response);
+        });
+
+        function createResult(data){
+            $('#result_name').html(data.name);
+            $('#result_location').html(data.location);
+            $('#result_language').html(data.language);
+            $('#result_comments').html(data.comments);
+            $('#result').show();
+        }
+
+        // process the form
+        $('#submitForm').click(function(event) {
+
+            // get the form data
+            // there are many ways to get this data using jQuery (you can use the class or id also)
+            var formData = {
+                'name'              : $('input[name=name]').val(),
+                'location'             : $('#location').val(),
+                'language'    : $('#language').val(),
+                'comments'    : $('#comments').val()
+            };
+            socket.emit('submitData',formData);
+            // stop the form from submitting the normal way and refreshing the page
+            event.preventDefault();
+            });
+    })
+    </script>
+</head>
+
+<body>
+            <div id="result" class="result">
+                    <div><span>Name:</span><span id="result_name"></span></div>
+                    <div><span>Location:</span><span id="result_location"></span></div>
+                    <div><span>Language:</span><span id="result_language"></span></div>
+                    <div><span>Comments:</span><span id="result_comments"></span></div>
+            </div>
+            <div>Your name: <input type='text' id="name" name='name'></div>
+            <div>Dojo Location: <select id="location" name="location">
+                    <option>Mountain View</option>
+                    <option>San Jose</option>
+                    <option>Sunnyvale</option>
+                </select></div>
+            <div>Favorite Language: <select id="language" name="language">
+                    <option>Javascript</option>
+                    <option>Java</option>
+                    <option>NodeJs</option>
+                </select></div>
+            <div>Comments(Optional)<textarea id="comments" name="comments" rows="5" cols="5"></textarea></div>                 
+            <input type='button' id="submitForm" value='create user'>
+</body>
+
+</html>

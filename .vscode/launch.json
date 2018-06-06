@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/Ramesh/Day2/carscats_express/app.js"
+            "program": "${workspaceFolder}/Ramesh/Day3/socket_proj/app.js"
         }
     ]
 }

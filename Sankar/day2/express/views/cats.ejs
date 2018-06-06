@@ -1,0 +1,15 @@
+<html>
+<body>
+    <h2>Here are all the users:</h2>
+    <% for (var x in users) { %>
+        <h3>Name: <%= users[x].name %></h3>
+        <h4>Email: <%= users[x].email %></h4>
+        <hr>
+    <% } %>
+
+    <a href="/cat/1"> <img id='cat1' src="/images/cat1.jpg" width="500" height="500"/> </a>
+    <a href="/cat/2"> <img id='cat2' src="/images/cat2.jpg" width="500" height="500"/> </a>
+    <a href="/cat/3"> <img id='cat3' src="/images/cat3.jpg" width="500" height="500"/> </a>
+    
+</body>
+</html>
