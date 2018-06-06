@@ -71,13 +71,14 @@ app.post('/sessions', (request, response)=>{
 })
 
 app.post('/users', (request, response)=>{
-    request.body.first_name
-    request.body.last_name
-    request.body.email
-    request.body.password
-    // API MongoDB
-    // response.redirect('/')
-    // response.render
+    
+    // request.body.first_name
+    // request.body.last_name
+    // request.body.email
+    // request.body.password
+    console.log("in users");
+    response.redirect('/');
+    // response.render('/sample')
 })
 
 

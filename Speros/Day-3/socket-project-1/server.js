@@ -36,6 +36,7 @@ const io = require('socket.io')(server);
 
 var users = [];
 var counter = 0;
+
 io.on('connection', function (socket) { //2
     users.push(
         {socket_id: socket.id}
