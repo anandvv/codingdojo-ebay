@@ -23,7 +23,13 @@ app.use(session({
 app.use(express.static(__dirname + "/static"));
 
 
+
+app.use(()=>{
+    console.log("Hello World")
+})
+
 var userData;
+
 // ROUTES
 app.get('/setSession', (request, response) => {
     if(request.session.counter){
@@ -37,9 +43,6 @@ app.get('/setSession', (request, response) => {
 app.get('/getSession', (request, response) => {
     response.json(request.session.counter);
 })
-
-
-
 app.get('/sample', (request, response) => {
     userData = [
         {id:1 ,name: "Michael", email: "michael@codingdojo.com"}, 
@@ -76,6 +79,7 @@ app.post('/users', (request, response)=>{
     // response.redirect('/')
     // response.render
 })
+
 
 // SERVER
 app.listen(8000, function() {
