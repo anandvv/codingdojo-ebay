@@ -1,0 +1,25 @@
+<html>
+<head>
+  <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <a href="/cars/new">New Car</a>
+    <h1>!!Add a new Car!!</h1>
+    <p>Welcome, <%= user %> </p>
+    <p>Please fill the form below to add a new car</p>
+    <hr>
+
+    <label for="make"><b>Car Make</b></label>
+    <input type="text" placeholder="Car Maker (i.e. Infiniti)" id="make" name="make" required>
+
+    <label for="model"><b>Car Model</b></label>
+    <input type="text" placeholder="QX50" name="model" id="model" required>
+
+    <label for="year"><b>Year of car</b></label>
+    <input type="text" placeholder="2018" name="year" id="year" required>
+    <hr>
+    <button id="submit" type="submit" class="registerbtn">Register</button>
+  </div>
+</body>
+</html
