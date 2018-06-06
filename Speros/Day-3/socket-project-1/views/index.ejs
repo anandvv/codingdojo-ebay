@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function (){
+    
+            var socket = io(); //1
+    
+            socket.on('serverMessage', function (data) { //4
+                alert("Server Message, data:", data);
+            });
+
+            $('#callServerButtonAlpha').click(function(event){
+                console.log('alpha')
+                socket.emit('alpha')
+            })
+
+            $('#callServerButtonBeta').click(function(event){
+                console.log('beta')
+                socket.emit('beta')
+            })
+
+            $('#callServerButtonGamma').click(function(event){
+                console.log('gamma')
+                socket.emit('gamma')
+            })
+
+         })
+    </script>
+</head>
+<body>
+    <h1>Fun with sockets</h1>  
+    <button id='callServerButtonAlpha'>Call Server Alpha</button>
+    <button id='callServerButtonBeta'>Call Server Beta</button>
+    <button id='callServerButtonGamma'>Call Server Gamma</button>
+</body>
+</html>
