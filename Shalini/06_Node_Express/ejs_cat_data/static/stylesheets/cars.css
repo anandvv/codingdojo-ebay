@@ -1,0 +1,51 @@
+.container {
+}
+.thumbnail {
+    border-radius: 4px;
+    padding: 1rem;
+    width: 35%;
+    border-radius: 50%;
+}
+.center {
+    text-align: center;
+}
+
+.car-name {
+    text-align: center;
+}
+
+.header {
+    background: #ba66c8;
+    font-weight: bold;
+    height: 5.5rem;
+    padding-top: 1rem;
+    font-size: 2rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.thumbnail-wrapper {
+    max-height:50%;
+}
+
+.cuddlesinfo {
+    height: 4rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    margin: 2%;
+    margin-top: 2rem;
+}
+
+.pink {
+    background: #cf93d9;
+}
+
+.medium-pink {
+    background: #ba66c8;
+}
+
+.dark-pink {
+    background: #9a29b0;
+}

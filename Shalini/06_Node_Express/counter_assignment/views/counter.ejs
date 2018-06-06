@@ -1,0 +1,17 @@
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="cars.css" rel="stylesheet">
+<div>
+        <div class="center header">Counters</div>
+                <h1 class="Center">Counter</h1>
+                <div class="center"> <%= counter %> </div>
+
+                <div class="center" style="display:block">
+                        <form action = "/addTwo" method = "post">
+                                <button>Increment 2</button>
+                        </form>
+                        <form action = "/reset" method = "post">
+                                <button>Reset</button>
+                        </form>
+                </div>
+</div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Class 1</title>
+    <script>
+        class Ninja{
+            constructor(ninjaName){
+                this.name = ninjaName;
+                this.health = 100;
+                this.speed = 3;
+                this.strength = 3;
+            }
+
+            sayName(){
+                console.log(`Ninja Name: ${this.name}`);
+            }
+
+            showStats(){
+                console.log(`Ninja Strength: ${this.strength}`);
+                console.log(`Ninja Speed: ${this.speed}`);
+                console.log(`Ninja Health: ${this.health}`);
+            }
+
+            drinkSake(){
+                this.health += 10;
+            }
+        }
+
+        class Sensei extends Ninja{
+            constructor(senseiName){
+                super(senseiName);
+                this.health = 200;
+                this.speed = 10;
+                this.strength = 10;
+            }
+
+            speakWisdom(){
+                super.drinkSake();
+                console.log("What one programmer can do in one month, two programmers can do in two months.");
+            }
+        }
+
+
+        // const ninja1 = new Ninja("Hayabusa");
+        // ninja1.sayName();
+        // ninja1.showStats();
+
+        // ninja1.drinkSake();
+        // ninja1.drinkSake();
+        // ninja1.drinkSake();
+
+        // ninja1.showStats();
+
+        // example output
+        const superSensei = new Sensei("Master Splinter");
+        superSensei.speakWisdom();
+        // -> "What one programmer can do in one month, two programmers can do in two months."
+        superSensei.showStats();
+        // -> "Name: Master Splinter, Health: 210, Speed: 10, Strength: 10"
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

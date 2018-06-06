@@ -1,0 +1,13 @@
+<html>
+<body>
+    <h1 style="background-color:powderblue;">Here are all the cats:</h1>
+    <% for (var x in users) { %>
+        <h2>Name: <%= users[x].name %></h2>
+        <img src= "<%=users[x].pic %>" alt="cat1" width="100" height="120">
+        <a href= "/cats/<%=users[x].catID %>">see the cat~</a>
+        <hr>
+    <% } %>
+
+    <button class='sampleBtn'>cats!!!</button>
+</body>
+</html>

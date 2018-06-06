@@ -1,0 +1,23 @@
+<html>
+<head>
+  <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 style="flex:1">EJS Cats</h1>
+      <a href="/cats">Cats</a>
+    </div>
+    <% console.log(cats[0]) %>
+    <% for(let i = 0; i < cats.length; i++) { %>
+
+        <div class="showCat">
+          <a href="/cat/<%= cats[i].index %>"><img src=<%= cats[i].route %> alt=<%= cats[i].name %>/></a>
+          <div class="catInfo">
+            <%= cats[i].name %>
+          </div>
+        </div>
+    <% } %>
+  </div>
+</body>
+</html>
