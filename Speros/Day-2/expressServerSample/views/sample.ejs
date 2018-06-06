@@ -2,5 +2,8 @@
 <%= JSON.stringify(users) %>
 <hr/>
 <% for(idx in users){ %>
-        <h5><%= users[idx].name %></h5>
+        <a href="/users/<%= users[idx].id %>">
+                <%= users[idx].name %>
+        </a> 
+        <br/>
 <% } %>
