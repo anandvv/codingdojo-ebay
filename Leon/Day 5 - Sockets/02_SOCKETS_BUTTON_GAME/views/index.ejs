@@ -1,0 +1,39 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+  <script src="/javascripts/index.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    var socket = io(); //1
+
+    socket.on('greeting', function (data) { //4
+        console.log(data.msg); //5
+        socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+    });
+
+    $('#submit').on('click', function(){
+      socket.emit('pushButton');
+    })
+
+    $('#reset').on('click', function(){
+      socket.emit('resetCounter');
+    })
+
+    socket.on('counterUpdated', function(data){
+      $('#counter').html(data.msg);
+    })
+  })
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>The button has been pushed <span id="counter"><%= counter %></span> times</h1>
+      <p>Push the button to update the count!</b></p>
+      <input class="button" type='submit' value='Push the epic Button' id="submit">
+      <input class="button" type='submit' value='Reset' id="reset">
+  </div>
+</body>
+</html>

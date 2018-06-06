@@ -1,0 +1,61 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+  <script src="/javascripts/index.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    var socket = io(); //1
+
+    socket.on('greeting', function (data) { //4
+        console.log(data.msg); //5
+        socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+    });
+
+    $('#submit').on('click', function(){
+
+      var data = {
+        name: $('#name').val(),
+        location: $('#location').val(),
+        language: $('#language').val(),
+        message: $('#message').val(),
+      }
+      console.log('Preparing to emit... ', data);
+      socket.emit('submitData', {msg: data});
+    })
+
+    socket.on('dataResponse', function(data){
+      $('.results').html(data.msg).show();
+    })
+  })
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Survey Thing</h1>
+    <div class="results">
+    </div>
+      <label for="name"><b>Your Name:</b></label>
+      <input type='text' name='name' id="name">
+      <label for="location"><b>Dojo Location:</b></label>
+      <select name="location" id="location">
+        <option value="San Jose">San Jose</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Dallas">Dallas</option>
+      </select>
+      <label for="language"><b>Favorite Language:</b></label>
+      <select name="language" id="language">
+        <option value="Javascript">Javascript</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        <option value="C++">C++</option>
+      </select>
+      <label for="message"><b>Comments (option)</b></label>
+      <textarea name="message" id="message" rows="10" cols="30"></textarea>
+      <input class="button" type='submit' value='Submit' id="submit">
+  </div>
+</body>
+</html>

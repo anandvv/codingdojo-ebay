@@ -6,6 +6,9 @@
     <script type ="text/javascript">
         $(document).ready(function (){
     
+            name = prompt("Please enter first name");
+            console.log(name);
+
             var socket = io(); //1
     
             socket.on('serverMessage', function (data) { //4
@@ -36,6 +39,7 @@
                 })
                 return false;
             })
+            $('#myForm').styles
 
          })
     </script>
