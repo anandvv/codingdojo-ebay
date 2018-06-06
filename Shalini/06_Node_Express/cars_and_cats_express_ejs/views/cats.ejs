@@ -1,0 +1,27 @@
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="stylesheets/cars.css" rel="stylesheet">
+<div class="container">
+                <div class="center">Check out the cute cats</div>
+                <div class="row">
+                    <% for(var idx in data) { %>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <img class="thumbnail" src=<%= data[idx].src %> />
+                                    <div class="car-name">Mercedes AMG</div>
+                            </div>
+                    <% } %>
+                </div>
+            
+                <div class="row">
+                            <% for(var idx in data) { %>
+                                    <div class="col-md-3 col-sm-3 col-xs-3">
+                                            <img class="thumbnail" src=<%= data[idx].src %> />
+                                            <div class="car-name">Mercedes AMG</div>
+                                    </div>
+                            <% } %>
+                 </div>
+            </div>
+
+<script type="text/javascript">
+    
+</script>

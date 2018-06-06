@@ -1,0 +1,20 @@
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="stylesheets/cars.css" rel="stylesheet">
+<div>
+        <div class="center header">EJS Cats</div>
+        <% for(var idx in data) { %>
+                <div class="row center">
+                        <div class="full-width">
+                                <a class="thumbnail-wrapper" href= <%= data[idx].url %> >
+                                        <img class="thumbnail" src=<%= data[idx].src %> />
+                                </a>
+                                
+                        </div>
+                </div>
+        <% } %>
+</div>
+
+<script type="text/javascript">
+    
+</script>

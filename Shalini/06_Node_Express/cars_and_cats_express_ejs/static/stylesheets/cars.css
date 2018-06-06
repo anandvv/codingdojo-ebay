@@ -1,0 +1,15 @@
+.container {
+}
+.thumbnail {
+    border-radius: 4px;
+    padding: 1rem;
+    width: 18rem;
+}
+.center {
+    margin-top: 2%;
+    text-align: center;
+}
+
+.car-name {
+    text-align: center;
+}
