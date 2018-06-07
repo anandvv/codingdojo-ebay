@@ -1,0 +1,11 @@
+<html>
+<body>
+<h2>EJS Cats</h2>
+    <% for (var x in cdata) { %>
+        <a class="thumbnail-wrapper" href= <%= cdata[x].url %> >
+            <img class="thumbnail" src=<%= cdata[x].src %> />
+        </a>
+        <br>
+    <% } %>
+</body>
+</html>

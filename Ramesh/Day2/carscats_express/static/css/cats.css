@@ -1,0 +1,22 @@
+body{
+    background-color: grey;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.wrapper a{
+    display: block;
+    text-align:center;
+}
+.wrapper ul {
+    text-align: center;
+    list-style: none;
+}
+
+.wrapper img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}

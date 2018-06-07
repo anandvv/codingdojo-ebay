@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Sockets</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+                // alert(1)
+                var socket = io(); //1
+        
+                socket.on('greeting', function (data) { //4
+                    console.log(data.msg); //5
+                    socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+                });
+
+                socket.on('surveyMessageServerResponse', function (data) { //4
+                    alert(data.msg); //5
+                });
+
+                $('#surveyForm').submit(function(){
+                    msg = {
+                        name: $('#name'),
+                        dojoLocation: $('#dojoLocation'),
+                        favoriteLanguage: $('#favoriteLanguage'),
+                        comment: $('comment')
+                    };
+                    alert(msg);
+
+                    socket.emit('surveyMessage', msg);
+                    
+                    return false;
+                });
+            });
+
+       </script>
+    </head>
+    <body>
+      <h1>Survey</h1>
+      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+    <form id="surveyForm">
+        Your Name: <input type='text' name='name' id='name'>
+        <br>
+        <br>
+        Dojo Location:
+        <select name="dojoLocation" id="dojoLocation">
+            <option value="San Jose">San Jose</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="Seattle">Seattle</option>
+        </select>
+        <br>
+        <br>
+        Favorite Language:
+        <select name="favoriteLanguage" id="favoriteLanguage">
+            <option value="C#">C#</option>
+            <option value="Java">Java</option>
+            <option value="Python">Python</option>
+        </select>
+        <br>
+        <br>
+        Comment (optional):
+        <textarea name="comment" value="" id="comment">
+        </textarea>
+        <br>
+        <br>
+        <input type='submit' value='Submit' />
+    </form>
+    </body>
+</html>

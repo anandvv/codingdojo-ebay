@@ -1,0 +1,59 @@
+<script>
+
+var _ = {
+    map: function(arr, callback){
+        var newArr = [];
+        arr.forEach(element => {
+            newArr.push(callback(element))
+        });
+        return newArr;
+    },
+    reduce: function(arr, callback){
+        var acc;
+        arr.forEach(element => {
+            acc = callback(element, acc);
+        });
+        return acc;
+    },
+    find: function(arr, element, callback){
+        return callback(arr, element);
+    },
+    filter: function(arr, callback){
+        var newArr = [];
+        arr.forEach(element => {
+            if (callback(element)){
+                newArr.push(element);
+            }
+        });
+        return newArr;
+    },
+    reject: function(arr, callback){
+        var newArr = [];
+        arr.forEach(element => {
+            if (!callback(element)){
+                newArr.push(element);
+            }
+        });
+        return newArr;
+    }
+}
+
+var filterRes = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0;});
+console.log(filterRes); 
+
+var mapRes = _.map([1, 2, 3, 4, 5, 6], function(num){ return num * num;});
+console.log(mapRes);
+
+var reduceRes = _.reduce([1, 2, 3, 4, 5, 6], function(num, acc=1){ return num * acc;});
+console.log(reduceRes);
+
+var findRes = _.find([1, 2, 3, 4, 5, 6], 4, function(arr, element){if (arr instanceof Array) return arr.indexOf(element) >= 0});
+console.log(findRes);
+
+var findRes = _.find([1, 2, 3, 4, 5, 6], 8, function(arr, element){if (arr instanceof Array) return arr.indexOf(element) >= 0});
+console.log(findRes);
+
+var filterRes = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0;});
+console.log(filterRes); 
+
+</script>
