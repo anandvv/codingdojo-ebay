@@ -31,7 +31,7 @@ io.on('connection', function (socket) { //2
     var magicNumber = Math.random() * 1000;
     var stringToDisplay = "You emitted the following information to the server: " +
         JSON.stringify(data) + "Your lucky number emitted by the server is: " + magicNumber;
-    //console.log(stringToDisplay);
+    console.log(stringToDisplay);
     socket.emit('surveyMessageServerResponse', {msg: stringToDisplay});
   });
 });

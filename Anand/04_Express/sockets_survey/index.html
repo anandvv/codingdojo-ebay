@@ -19,12 +19,12 @@
 
                 $('#surveyForm').submit(function(){
                     msg = {
-                        name: $('#name'),
-                        dojoLocation: $('#dojoLocation'),
-                        favoriteLanguage: $('#favoriteLanguage'),
-                        comment: $('comment')
+                        name: $('#name').val(),
+                        dojoLocation: $('#dojoLocation').val(),
+                        favoriteLanguage: $('#favoriteLanguage').val(),
+                        comment: $('comment').val()
                     };
-                    alert(msg);
+                    //alert(JSON.stringify(msg));
 
                     socket.emit('surveyMessage', msg);
                     
