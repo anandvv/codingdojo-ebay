@@ -38,8 +38,24 @@ app.get('/', function(req, res) {
 // Add User Request 
 app.post('/users', function(req, res) {
     console.log("POST DATA", req.body);
-    // This is where we would add the user from req.body to the database.
+// This is where we would add the user from req.body to the database.
     res.redirect('/');
+})
+
+// Add User Request 
+app.post('/create', function(req, res) {
+    console.log("POST DATA", req.body);
+    // This is where we would add the user from req.body to the database.
+    console.log("Name: " + req.body.name);
+    console.log("Age: " + req.body.age);
+    var user = new User({name: req.body.name, age: req.body.age})
+    user.save(function(err){
+        if(err){
+            console.log("Error occurred inserting user record")
+        }else{
+            res.redirect('/');
+        }
+    });
 })
 
 // Setting our Server to Listen on Port: 8000
