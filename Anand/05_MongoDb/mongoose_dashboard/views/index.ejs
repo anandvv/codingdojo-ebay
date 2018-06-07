@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animals</title>
+    <script>
+        function skipToAnimals(){
+            window.location.href="/animals";
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to Animal Dashboard</h1>
+
+    <form id="animalForm" method="POST" action="/create">
+        <p>
+            Animal name: <input type="text" id="name" name="name" />
+        </p>
+        <p>
+            Animal age: <input type="text" id="age" name="age" />
+        </p>
+        <p>
+            Animal sex: <input type="text" id="sex" name="sex" />
+        </p>
+        <p>
+            Eye Color: <input type="text" id="eyeColor" name="eyeColor" />
+        </p>
+        <p>
+            Image URL: <input type="text" id="imageURL" name="imageURL" />
+        </p>
+        <p>
+            <input type="submit" value="Add Animal" />
+            <input id="btn_seeAnimals" type="button" value="Skip to Animals" onclick="skipToAnimals();"/>
+        </p>
+    </form>
+</body>
+</html>

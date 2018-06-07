@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animals</title>
+</head>
+<body>
+    <h1>Animals</h1>
+    <%for(index in animals){%>
+        <p>
+            <%=animals[index].name%>
+        </p>
+        <p>
+            <%=animals[index].age%>
+        </p>
+        <p>
+            <%=animals[index].sex%>
+        </p>
+        <p>
+            <%=animals[index].eyeColor%>
+        </p>
+        <p>
+            <img src="<%=animals[index].imageURL%>" /> 
+        </p>        
+    <%}%>
+</body>
+</html>

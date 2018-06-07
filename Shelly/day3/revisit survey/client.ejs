@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    
+    <script type ="text/javascript">
+        var socket = io(); //1
+        $(document). ready(function (){
+    
+            
+    
+            socket.on('greeting', function (data) { //4
+                console.log(data.msg); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+            });
+            
+             socket.on('updated_message', function(data) {
+                console.log('should receive updated msg');
+                console.log(data.msg);
+                $('#b1').html(data.msg);
+            });
+                socket.on('random_number',function(data) {
+                    $('#b2').html(" your random number is :" + data.msg);
+                })
+          
+            $('form').submit(function(){
+                socket.emit('posting_form', {msg:{
+                    name: $('#name').val(),
+                    email:$('#email').val()
+                    }
+                })
+                return false;
+            })
+            
+         })
+         
+
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id=b1>
+        
+    </div>
+    <div id=b2>
+            <p id=box></p>
+        </div>
+    <form>
+        Name: <input type='text' name='name' id=name>
+        Email: <input type='text' name='email' id=email>
+        <input type='submit' value='push'>
+    </form>
+    <input type='submit' value=reset>
+</body>
+
+<body>
+    <h1>Please fill out the survey!</h1>  
+</body>
+
+
+
+
+
+
+</html>

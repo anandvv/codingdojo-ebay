@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    
+    <script type ="text/javascript">
+        var socket = io(); //1
+        $(document).ready(function (){  
+            socket.on('greeting', function (data) { //4
+                console.log(data.msg); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+                $('#b1').html(data.cnt);
+            });
+                socket.on('update notifications', function(data){
+                    $('#b1').html(data.msg);
+                });
+          
+            $('#push').submit(function(){
+                socket.emit('pushed', {msg:{}
+                })
+                return false;
+            });
+
+            $('#reset').submit(function(){
+                socket.emit('reset', {msg:{}
+                })
+                return false;
+            });
+            
+         })
+         
+
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>The number of users click on the button is: </h1>
+    <div id=b1>
+        
+    </div>
+    <form id='push'>
+        <input type='submit' value='push'>
+    </form>
+    <form id='reset'>
+            <input type='submit' value='reset'>
+    </form>
+   
+</body>
+</html>

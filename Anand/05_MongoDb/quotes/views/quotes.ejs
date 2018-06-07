@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+</head>
+<body>
+    <h1>Here are some awesome quotes!</h1>
+    <%for(index in quotes){%>
+        <%=quotes[index].name%>
+        <p>
+            <%=quotes[index].quote%>
+        </p>
+    <%}%>
+</body>
+</html>

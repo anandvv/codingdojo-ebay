@@ -16,6 +16,7 @@ var epicCount = 0;
 var color='green';
 var messageId = 0;
 var messages = [];
+var joinedUsers = [];
 
 // SERVER
 var server = app.listen(8000, function() {
@@ -28,7 +29,7 @@ io.on('connection', function (socket) { //2
   console.log(socket.id);
   console.log('socket connected');
 
-  /*socket.on('submitData', function (data) { 
+  socket.on('submitData', function (data) { 
     // socket.emit will respond back to the socket client that triggered this 'alpha' listener
     console.log('--data--'+data);
     socket.emit('result',data);
@@ -48,24 +49,28 @@ io.on('connection', function (socket) { //2
     color=data.color;
     io.emit('colorChange',{color:color});
   });
-  */
+  
   socket.on('chat', function (data) { 
     // io.emit will message all socket clients
-    messageId++;
-    data.id=messageId;
-    messages.push(data);
-    socket.broadcast.emit('messageUpdate',data);
-    //io.emit('colorChange',{color:color});
+    messages.push(data.message);
+    //socket.broadcast.emit('updateMessage',updateMessage);
+    var msgArr = [];
+    msgArr.push(data.message);
+    io.emit('updateMessage',{messages:msgArr});
   });
+  
   socket.on('joinChat', function (data) { 
-    // io.emit will message all socket clients
-    messageId++;
     var message ={};
+    joinedUsers.push(data.userName);
     message.userName = data.userName;
     message.message="Joined";
-    messages.push(messages);
-    io.emit('messageUpdate',{mesaages:messages});
-    //io.emit('colorChange',{color:color});
+    messages.push(message);
+    socket.emit('startChat',{messages:messages,users:joinedUsers});
+    var joinMessage = [];
+    joinMessage.push(message);
+    var joinedUser = [];
+    joinedUser.push(data.userName);
+    socket.broadcast.emit('updateMessage',{messages:joinMessage,users:joinedUser});
   });
   
   socket.on('gamma', function (data) { 
@@ -108,7 +113,7 @@ function getCuddleData(idx){
 // ROUTES
 //EJS routes
 app.get('/chat', (request, response) => {
-    response.render("chat",{color:color});
+    response.render("chat",{isNewUser:true});
  })
 app.get('/color', (request, response) => {
     response.render("color",{color:color});
