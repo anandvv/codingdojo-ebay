@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Sockets</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+                // alert(1)
+                var socket = io(); //1
+        
+                socket.on('greeting', function (data) { //4
+                    console.log(data.msg); //5
+                    socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+                });
+
+                socket.on('surveyMessageServerResponse', function (data) { //4
+                    alert(data.msg); //5
+                });
+
+                $('#epicCounterForm').submit(function(){
+                    // msg = {
+                    //     name: $('#name').val(),
+                    //     dojoLocation: $('#dojoLocation').val(),
+                    //     favoriteLanguage: $('#favoriteLanguage').val(),
+                    //     comment: $('comment').val()
+                    // };
+                    //alert(JSON.stringify(msg));
+
+                    msg = {
+                        count: 1
+                    }
+ 
+                    // socket.emit('incrementCounter', msg);
+                    socket.emit('incrementCounter');
+                    
+                    return false;
+                });
+            });
+
+       </script>
+    </head>
+    <body>
+        <h1>Counter</h1>
+        <p>
+            <h3><%= sessionData.counter %> time(s).</h3>
+        </p>
+        <p>
+            <form id="epicCounterForm">
+                <input type="submit" value="PUSH THE EPIC BUTTON">
+            </form>
+        </p>
+        <p>
+            <form id="resetCounterForm">
+                    <input type="submit" value="Reset">
+            </form>
+        </p>
+    </body>
+</html>
