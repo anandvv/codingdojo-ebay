@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    
+    <script type ="text/javascript">
+        var socket = io(); //1
+        var user;
+        $(document).ready(function (){  
+            socket.on('greeting', function (data) { //4
+                console.log(data.color); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+                $('#b1').html(data.cnt);
+                $('body').css("background-color", data.color);
+            });
+            //var name = confirm("enter your name");
+            user = prompt("Please enter your name", "Your name here");
+            
+            if (user == null || user == "") {
+                txt = "User cancelled the prompt.";//dop nothing
+            } else {
+                txt = "Hello " + user + "! Let's start the group chat!";
+                
+                $('#greeting').html(txt);
+                $('#chatname').html(user);
+                socket.emit('add user', {user:user});
+                //socket.emit('start chat', {});
+            }
+
+          
+            $('#btn').submit(function(){
+                console.log("btn clicked");
+                var msg = $('#message').val();
+
+                socket.emit('chat', {user:user, message: msg});
+                return false;
+                
+            });
+                
+                
+            });
+            
+            
+            socket.on('update chats', function(data) {
+                var chats = "";
+                console.log("update all chats");
+                console.log(data.messages);
+                for(each in data.messages) {
+
+                    chats += (data.messages[each].user===user ? "you": data.messages[each].user) + " said: " + data.messages[each].message + ".<br />";
+                }
+                console.log(chats);
+                $('#chats').html(chats);
+            });
+
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id=greeting></h1>
+    
+   <h7 id=chatname></h7>
+   <h5 id=chats></h5>
+
+    <form id=btn>
+        Chat: <input id='message' type='text' name='chat'>
+        <input  type='submit' value='forward message'>
+    </form>
+
+
+
+
+
+</body>
+</html>

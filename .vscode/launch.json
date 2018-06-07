@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/Ramesh/Day3/socket_proj/app.js"
+            "program": "${workspaceFolder}/Anand/04_Express/sockets_survey/app.js"
         }
     ]
 }
