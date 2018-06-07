@@ -4,50 +4,78 @@
 <title>Survey Form</title>
 <link rel="stylesheet"  href="/css/survey.css"/>
 <style>
+    .wrapper {
+        text-align:right;
+    }
     #result {
         height: 200px;
         width: 200px;
+    }
+    #chatWindow {
+        display: none;
     }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
     <script type ="text/javascript">
+    var userName='';
 
     $(document).ready(function (){
+        var socket = io(); 
+        var lastCount = 0;
 
         function showMessage(response){
             for(var i=0;i<response.messages.length;i++){
-                $('#chatHistory').appendChild(createMessage(response.messages[i]));
+                $('#chatHistory')[0].appendChild(createMessage(response.messages[i]));
+            }
+            addUser(response)
+        }
+
+        function addUser(response){
+            for(var i=0;i<response.users.length;i++){
+                $('#userList')[0].appendChild(createMessage(response.users[i]));
             }
         }
 
+        function createUser(userName){
+            var div = document.createElement('div');
+            div.id = userName;
+            div.innerHTML = userName;
+            return div;
+        }
+
         function createMessage(response){
-            var span = document.createEleemnt('span');
+            var span = document.createElement('div');
             span.innerHTML = response.userName+":"+response.message;
             return span;
         }
 
-        var socket = io(); 
-        var lastCount = 0;
         // process the form
         $('#joinChat1').click(function(event) {
            var joinData = {};
-           joinData.userName = $('#userName').text();
-           socket.on('startchat', function (response) { //4
+           userName =  $('#userName').val();
+           $('#userName').val('');
+           joinData.userName = userName;
+           socket.on('startChat', function (response) { //4
+               $('.wrapper').hide();
+               $('#chatWindow').show();
                showMessage(response);
                socket.on('messageUpdate', function (response) { //4
-                alert('messageUpdate');
+                    showMessage(response);
+                });
+                socket.on('updateMessage', function (response) { //4
                     showMessage(response);
                 });
            });
-           
            socket.emit('joinChat',joinData);
-           
         });
 
          // process the form
-         $('#epicReset').click(function(event) {
-            socket.emit('epicReset');
+         $('#submit').click(function(event) {
+            var message ={};
+            message.userName = userName;
+            message.message= $('#message').val();
+            socket.emit('chat',{message:message});
         });
     })
     </script>
@@ -57,12 +85,20 @@
          <div class="wrapper">
                 <input type="text" id="userName"/> <button id="joinChat1">JoinChat</button>
          </div>
+         <div id="userList">
+             
+         </div>
          <div id="result">
-            <div>Chat History</div>
-            <div id="chatHistory">
+            
+            <div id="chatWindow">
+                <div>Chat History</div>
+                <div id="chatHistory">
 
-            </div> 
-
+                </div>
+                <div>
+                    <input type="text" id="message"/><button id="submit">Submit</button>
+                </div>
+            </div>
          </div>
 </body>
 
