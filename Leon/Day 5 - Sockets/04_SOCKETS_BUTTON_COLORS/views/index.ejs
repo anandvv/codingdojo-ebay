@@ -1,0 +1,42 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+  <script src="/javascripts/index.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    var socket = io(); //1
+
+    socket.on('greeting', function (data) { //4
+        console.log(data.msg); //5
+        socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+    });
+
+    socket.on('change_color', function(data) {
+      $('.container').css('background-color', data.color);
+    })
+
+    $('.submit').on('click', function(){
+      var color = $(this).val();
+      socket.emit('set_color', { color: color});
+    })
+
+    $('#reset').on('click', function(){
+      socket.emit('resetCounter');
+    })
+  })
+  </script>
+</head>
+<body>
+  <div class="container" style="background-color: <%= color %>">
+    <h1>Pick your poison...</h1>
+    <div class="button-field">
+      <button class="button submit" type='submit' value='blue'>Blue</button>
+      <button class="button submit" type='submit' value='red'>Red</button>
+      <button class="button submit" type='submit' value='green'>Green</button>
+    </div>
+  </div>
+</body>
+</html>
