@@ -12,7 +12,8 @@
             var socket = io(); //1
     
             socket.on('serverMessage', function (data) { //4
-                alert("Server Message, data:", data);
+                $('#canvas').html("<h1>"+ data.first_name +"</h1>");
+
             });
 
             $('#callServerButtonAlpha').click(function(event){
@@ -37,6 +38,7 @@
                     first_name: $('#first_name').val(),
                     last_name: $('#last_name').val(),
                 })
+                socket.emit('alpha',  { x: 5, y :10} )
                 return false;
             })
             $('#myForm').styles
@@ -49,6 +51,8 @@
     <button id='callServerButtonAlpha'>Call Server Alpha</button>
     <button id='callServerButtonBeta'>Call Server Beta</button>
     <button id='callServerButtonGamma'>Call Server Gamma</button>
+
+    <div id="canvas" > </div>
 
     <form id='myForm'>
         <input type="text" id="first_name">

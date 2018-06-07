@@ -1,0 +1,10 @@
+<h1>Mongoose - Index</h1>
+
+<% for( index in users) { %>
+    <%= users[index] %>
+<% } %>
+<form action="/users" method="post">
+    <input type="text" name="first_name" placeholder="First Name">
+    <input type="text" name="last_name" placeholder="Last Name">
+    <input type="submit">
+</form>
