@@ -13,6 +13,7 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
 .player-right {
     padding-top: 2%;
     padding-left: 2%;
+    padding-right: 2%;
     width: 40%;
     background: #00000024;
 }
@@ -62,7 +63,6 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
 }
 
 #hotspot {
-    border: 1px solid black;
 }
 /* 
 .image-container .after {
