@@ -1,0 +1,58 @@
+<html>
+<head>
+    <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+</head>
+
+<body>
+    <p>Conversation Board</p>
+    <!--<h4 id="chatsusernames"></h4> -->
+    <!-- <h4 id="chatmessages"></h4>  --> 
+    <h4 id="usersandchats"></h4> 
+
+    <form id=send> 
+        <input type="text" placeholder="Enter your message here" id="message"><br>
+        <button type="submit">Send</button>
+    </form> 
+    
+    <script type ="text/javascript">
+        var socket = io(); //1
+
+        $(document).ready(function (){
+            var person = prompt("Please enter your name", "");
+            console.log('Client: Person' + person);
+
+            if(person !=null) {
+                console.log("Client: person is" + person);
+                socket.emit('userEntered', {user: person}); 
+            }
+
+            socket.on('updateAllUsers', function (data) { //7
+                console.log("Client: updateAllUsers "+ data); //8 (note: this log will be on your server's terminal)
+                console.log("Client: updateAllUsers "+ data.userdata);
+                //$("#chatsusernames").html("<h1>Users so far "+ data.userdata + " </h1");
+            });
+
+            $("#send").submit(function (){
+                var message = $("#message").val();
+                console.log("Client: sending message "+ message);
+                socket.emit('messageEntered', {user:person, message:message}); 
+                return false; //very important one, otherwise it will go into infite loop prompting the user 
+            });
+
+            socket.on('updateAllUsersMessages', function (data) { //7
+                chats = "";
+                console.log("Client: updateAllUsersMessages "+data); //8 (note: this log will be on your server's terminal)
+                //$("#chatmessages").html("<h1>Messages so far "+ data.msgdata + " </h1");
+                for(idx in data.msgdata) {    
+                    chats += (data.msgdata[idx].user===person ? "you": data.msgdata[idx].user) + " said: " + data.msgdata[idx].message + "<br />";
+                }
+                console.log(chats);
+                $('#usersandchats').html(chats);
+            });
+
+        });
+     </script>   
+</body>
+</html>
