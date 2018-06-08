@@ -60,6 +60,10 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
     color: #4e774e;
     padding-bottom: 4%;
 }
+
+#hotspot {
+    border: 1px solid black;
+}
 /* 
 .image-container .after {
     position: absolute;

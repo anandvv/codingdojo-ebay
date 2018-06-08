@@ -27,7 +27,11 @@
     <div class="player-container">
         <div class="player-left">
                 <div class="image-container">
-                        <img class="player-image" src= <%= player.image %> />
+                        <img class="player-image"  width="145" height="126"  usemap="#playermap" src= <%= player.image %> />
+                        <map name="playermap">
+                                <area id="hotspot" shape="rect" alt="Sun" coords="<%= player.equipments[0].coord %>" href="<%= player.image %>" >
+                        </map>
+
                         <div class="player-image-overlay"> <%= player.name %> </div>
                 </div>
         </div>

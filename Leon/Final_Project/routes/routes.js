@@ -9,7 +9,7 @@ var PlayerSchema = new mongoose.Schema({
  about: String,
  image: String,
  age: Number,
- equipments: [{name: String, coord: []}]
+ equipments: [{name: String, coord: String}]
 },{timestamps: true});
 
 mongoose.model('players', PlayerSchema); // We are setting this Schema in our Models as 'User'

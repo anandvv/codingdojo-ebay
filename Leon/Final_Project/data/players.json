@@ -7,7 +7,7 @@
 		equipments: [
 			{
 				name: "TaylorMade M4 (15 degrees)",
-				coord: [20, 60, 10, 50]
+				coord: "50,150,500,300"
 			}
 		]
 	},
@@ -19,19 +19,19 @@
 		equipments: [
 			{
 				name: "Titleist 917F2",
-				coord: [20, 60, 10, 50]
+				coord: "450,150,650,400"
 			}
 		]
 	},
 	{
-		name: "Jeff Knox",
+		name: "Jason Day",
 		age: 40,
-		image: "http://wpmediars.golfwrx.com/wp-content/uploads/2018/04/JeffKnoxAugustaWITB2018.png",
-		about: "Wait, who is Jeff Knox? He’s the amateur course record holder at Augusta National GC (11-under 61 with a bogey on No. 17, apparently), and he gets the call to play in the Masters as a marker when there’s an odd number of players in the field on the weekend. He’s performed this solemn duty since 2003. Most famously, he outplayed Rory McIlroy by a stroke in 2014, with McIlroy calling him “the best I’ve ever seen on Augusta’s greens.\n\n As a member of Augusta National and thrice the Georgia Mid-Amateur champion, Knox is anything but an average guy. Indeed, son of a banking magnate, Knox manages the nonprofit Knox Foundation, which oversees more than $70 million in assets. Even so, seeing him paired with a professional during the Masters telecast and playing well is somehow the fulfillment of every average golfer’s fantasy.\n\nWe weren’t surprised so many GolfWRX members were interested in Paul Casey’s high praise for Knox after their Saturday pairing. We can also report Knox unofficially shot 76 Sunday, paired with Vijay Singh. Naturally, we were curious about Mr. Knox’s WITB, and through the persistence of our own Director of Original Content Johnny Wunder, we’re happy to present the WITB for legendary Masters marker.",
+		image: "http://wpmediars.golfwrx.com/wp-content/uploads/2015/09/Jason_Day_TaylorMade_M1_driver.png",
+		about: "Wait, who is Jason Day? He’s the amateur course record holder at Augusta National GC (11-under 61 with a bogey on No. 17, apparently), and he gets the call to play in the Masters as a marker when there’s an odd number of players in the field on the weekend. He’s performed this solemn duty since 2003. Most famously, he outplayed Rory McIlroy by a stroke in 2014, with McIlroy calling him “the best I’ve ever seen on Augusta’s greens.\n\n As a member of Augusta National and thrice the Georgia Mid-Amateur champion, Knox is anything but an average guy. Indeed, son of a banking magnate, Knox manages the nonprofit Knox Foundation, which oversees more than $70 million in assets. Even so, seeing him paired with a professional during the Masters telecast and playing well is somehow the fulfillment of every average golfer’s fantasy.\n\nWe weren’t surprised so many GolfWRX members were interested in Paul Casey’s high praise for Knox after their Saturday pairing. We can also report Knox unofficially shot 76 Sunday, paired with Vijay Singh. Naturally, we were curious about Mr. Knox’s WITB, and through the persistence of our own Director of Original Content Johnny Wunder, we’re happy to present the WITB for legendary Masters marker.",
 		equipments: [
 			{
 				name: "Titleist C16",
-				coord: [60, 120, 10, 50]
+				coord: "50,150,500,300"
 			}
 		]
 	}
