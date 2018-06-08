@@ -71,9 +71,9 @@ var Game = function DotGame(options){
       rangeInput.addEventListener('change',function(){
           speed = rangeInput.value;
       });
-      window.onload = function(){
-         createDot();
-      };
+      
+       createDot();
+      
       board.addEventListener('click',function(e){
          var dot = e.srcEleemnt || e.target;
          if(hasClass(dot,'dot')){
@@ -81,7 +81,8 @@ var Game = function DotGame(options){
               if(window.color == colorFromDot){
                     var dia = parseInt(dot.getAttribute('dia'));
                     var score = Math.floor((200-dia)/2) +1;
-                    scoreBoard.innerHTML = parseInt(scoreBoard.innerHTML)+score;
+                    socket.emit('ball_hit',{user:currentUserName,score:score});
+                    //scoreBoard.innerHTML = parseInt(scoreBoard.innerHTML)+score;
                     board.removeChild(dot);
               }
          }
@@ -90,8 +91,7 @@ var Game = function DotGame(options){
 
     function initValues(gameOptions){
         this.color = gameOptions.color;
-        this.gameId = gameOptions.color;
-        this.colorArr = gameOptions.colorArr.split(',');
+        this.colorArr = gameOptions.colorArr;
     }
     
     function startGame(gameOptions){

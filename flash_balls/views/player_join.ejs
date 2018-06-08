@@ -1,27 +1,48 @@
 <html>
 <head>
-    <title>Sockets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FlashBall Game</title>
+    <link rel="stylesheet" type="text/css" href="/css/game.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
     
     <script type ="text/javascript">
         var socket = io(); //1
-        var user;
-        
-        $(document).ready(function (){  
-            socket.on('greeting', function (data) { //4
-                console.log(data.color); //5
-                socket.emit('thankyou', { msg: 'Thank you for connecting me!!!! -Client' }); //6
-                $('#b1').html(data.cnt);
-                $('body').css("background-color", data.color);
-            });
-            
+        var currentUserName = "<%= userName %>";
+        $(document).ready(function (){
             socket.on('joined_user',function(response) {
-                console.log("update user");
+                var otherUserName = response.userName;
                 $('#userForm').hide();
-                $('#chatBoard')[0].appendChild(createStatus(response.userName+" joined"))
-               //$('#status').html("You joined Wait for Others to join");
+                $('#chatBoard')[0].appendChild(createStatus(otherUserName+" joined"))
             });
+
+            socket.on('start_game',function(userList) {
+                var colors = [];
+                for(var i in userList){
+                    colors.push(userList[i]);
+                }
+                createScoreBoard(userList);
+                Game.startGame({color:userList[currentUserName],colorArr:colors,socket:socket});
+            });
+
+            socket.on('score_data',function(scores) {
+                for(var i in scores){
+                    $('#scoreBoard').find('#'+i).html(scores[i]);
+                }
+            });
+
+            function createScoreBoard(userList){
+                for(var i in userList){
+                    var div = document.createElement('div');
+                    div.innerHTML=message;
+                    div.id=i;
+                    div.style.backgroundColor = userList[i];
+                    $('#scoreCard')[0].appendChild(div);
+                }
+            }
 
             function createStatus(message){
                 var div = document.createElement('div');
@@ -32,42 +53,36 @@
 
     </script>
     <style>
-        #chatBoard{
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            background-color: lightblue;
-        }
-        #chatBoard div{
-            color:red;
-        }
+        
     </style>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    
 </head>
 <body>
-    <h1 id=greeting></h1>
-    
-   <h7 id=players></h7>
-   
-   <% if(!userName){ %>
-        <form action="/join" method="post" id="userForm">
-            Enter your user name: <input id='player_name' type='text' name='user_name'>
-            <input  type='submit' value='Join The Game!'>
-        </form>
-   <% } else { %>
-        inside else
-        <h5 id=chatBoard>
+        <% if(!userName){ %>
+                <form action="/join" method="post" id="userForm">
+                    Enter your user name: <input id='player_name' type='text' name='user_name'>
+                    <input  type='submit' value='Join The Game!'>
+                </form>
+        <% } else { %>
                 <% var users = Array.from(users) %>
-                <% for(i=0;i<users.length;i++) { %>
-                    <div><%= users[i] %> Joined.</div>
-                 <% } %>
-        </h5>
-   <% } %>
-    
-    <div id="status"></div>
+                <header class="header">
+                    <div class="score" id="scoreBoard">
+                    </div>
+                    <div class="sliderWrap">
+                        <input type="range" id="speedRange" min="10" max="100" value="10">
+                        <label for="speedRange">Speed</label>
+                    </div>
+                </header>
+                <div class="board" id="board">
+                    
+                </div>
+                <script src="/js/game.js"></script>
+                <h5 id=chatBoard>
+                        <% for(i=0;i<users.length;i++) { %>
+                            <div><%= users[i] %> Joined.</div>
+                        <% } %>
+                </h5>
+        <% } %>
 </body>
 </html>

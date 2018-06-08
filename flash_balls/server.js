@@ -28,7 +28,7 @@ app.post('/join', function(request, response){
     let userName = request.body.user_name;
     joinUser(userName);
 
-    response.render('player_join', {userName: userName,users:users});
+    response.render('player_join', {userName: userName,users:users,colorArr:null});
 });
 
 app.post('/result', function(request, response){
@@ -50,31 +50,19 @@ const io = require('socket.io')(server);
         count++;
             users.add(user);
             dict[user] = 0;
+            io.emit('joined_user', {userName:user});
             if (count === 1) user_color[user] = 'Green';
             else if (count === 2) user_color[user] = 'Yellow';
             else if (count === 3) {
                 user_color[user] = 'Blue';
-                count = 0;
+                //count = 0;
                 io.emit('start_game', user_color);
-            }
-            io.emit('joined_user', {userName:user});
+            }      
  }
 
     io.on('connection', function(socket){
         socket.emit('greeting', {msg: 'Greetings, from server Node, brought to you by Sockets! -Server'});
-        socket.on('user_join', function(user){
-            count++;
-            users.add(user);
-            dict[user] = 0;
-            if (count === 1) user_color[user] = 'Green';
-            else if (count === 2) user_color[user] = 'Yellow';
-            else if (count === 3) {
-                user_color[user] = 'Blue';
-                count= 0;
-                io.emit('start_game', user_color);
-            }
-            io.emit('joined_user', {userName:user});
-        });
+        
 
         socket.on('user_leave', function(user){
             users.delete(user);
@@ -82,8 +70,8 @@ const io = require('socket.io')(server);
             io.emit('user_left', user);
         });
 
-        socket.on('ball_hit', function(user){
-            dict[user] = dict[user] + 1;
+        socket.on('ball_hit', function(response){
+            dict[response.user] = dict[response.user] + response.score;
             io.emit('score_data', dict);
         });
 
