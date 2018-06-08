@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+</head>
+
+<body>
+<h1>Animal Dashboard</h1>
+
+<form action="/animals/<%=animal.id%>" method="post"> <!-- /updateanimal-->
+    Animal Name:
+    <input type="text" name="name" placeholder="<%=animal.name%>">
+    Animal Type
+    <input type="text" name="type" placeholder="<%=animal.type%>">
+    <button type="submit">Update my animal!</button>
+</form>
+
+<!-- <form action="/updateanimal" method="post"> 
+    Animal Name:
+    <input type="text" name="name" placeholder="Name">
+    Animal Type
+    <input type="text" name="type" placeholder="Type">
+    <button type="submit">Update my animal!</button> -->
+</form>
+</body>
+</html>

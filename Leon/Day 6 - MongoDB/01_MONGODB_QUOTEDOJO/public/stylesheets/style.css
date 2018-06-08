@@ -1,0 +1,52 @@
+body {
+  font-family: arial, sans-serif;
+}
+
+.form,
+.formresults {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 50%;
+  padding-top: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.button {
+  margin: 10px;
+  background-color: teal;
+  border-radius: 5px;
+  color: white;
+  padding: .5em;
+  text-decoration: none;
+}
+
+.quote-container {
+  background-color: lightyellow;
+  width: 500px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quote {
+  color: gray;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.name {
+  color: blue;
+  font-weight: bold;
+}

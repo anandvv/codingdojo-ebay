@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+</head>
+
+<body>
+    <button type="submit" id="green">Green</button>
+    <button type="submit" id="blue">Blue</button>
+    <button type="submit" id="pink">Pink</button>
+
+    <script type ="text/javascript">
+        var socket = io(); //1
+        $(document).ready(function (){
+            $("#blue").click(function (){
+                socket.emit('blue'); //6  
+            });
+
+            $("#green").click(function (){
+                socket.emit('green'); //6  
+            });
+
+            $("#pink").click(function (){
+                socket.emit('pink'); //6  
+            });
+
+            socket.on('updateBgColorAllClients', function (data) { //7
+                console.log(data); //8 (note: this log will be on your server's terminal)
+                $('body').css("background-color", data.color);
+            });
+
+        });
+     </script>   
+</body>
+</html>

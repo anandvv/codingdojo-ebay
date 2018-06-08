@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+
+    <p>Please fill the form below to add a new car2</p>
+    <hr>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Car Maker (i.e. Infiniti)" id="name" name="name" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="" name="email" id="email" required>
+
+    <hr>
+    <button type="submit" id="register">Register</button>
+
+    <div>Random Num: <span id=“randomNum”></span></div>
+
+    <script type ="text/javascript">
+        var socket = io(); //1
+        $(document).ready(function (){
+            $("#register").click(function (){
+                //var socket = io(); //1
+                var name = $("#name").val();
+                console.log("Name"+name);
+                var email = $("#email").val();
+                console.log("email"+email); 
+                socket.emit('posting_form', { name: name,email: email }); //6  
+                return false;  
+            })
+
+            socket.on('random_number', function (data) { //7
+                console.log(data);
+                console.log(data.rnum); //8 (note: this log will be on your server's terminal)
+                $("#randomNum").text(data.rnum);
+            });
+
+            socket.on('updated_message', function (data) { //7
+                console.log(data.msg); //8 (note: this log will be on your server's terminal)
+                //console.log(data.email);
+            });
+        });
+    </script>
+</head>
+<body>

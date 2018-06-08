@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function skipToQuotes(){
+            window.location.href="/quotes";
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to Quoting Dojo</h1>
+
+    <form id="quoteForm" method="POST" action="/create">
+        Your name: <input type="text" id="name" name="name" />
+        <p>
+        Your quote: <textarea rows="4" cols="80" id="quote" name="quote">
+            </textarea>
+        </p>
+        <p>
+            <input type="submit" value="Add My Quote" />
+            <input id="btn_skipToQuotes" type="button" value="Skip to Quotes" onclick="skipToQuotes();"/>
+        </p>
+    </form>
+</body>
+</html>

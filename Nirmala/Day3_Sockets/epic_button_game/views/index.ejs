@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" type = "text/css" href="/stylesheets/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+</head>
+
+<div id = "canvas"></div>
+
+<body>
+    <p>push the epic button</p>
+    <button type="submit" id="push">Push the epic button</button>
+    <button type="reset" id="reset">Reset count</button>
+
+    <script type ="text/javascript">
+        var socket = io(); //1
+        $(document).ready(function (){
+            $("#push").click(function (){
+                socket.emit('push'); //6  
+            })
+
+            socket.on('updateAllClients', function (data) { //7
+                console.log(data.ctr); //8 (note: this log will be on your server's terminal)
+                $("#canvas").html("<h1>The button has been pushed "+ data.ctr+" times</h1");
+            });
+
+            $("#reset").click(function (){
+                socket.emit('reset'); //6  
+            })
+
+        });
+     </script>   
+</body>
+</html>

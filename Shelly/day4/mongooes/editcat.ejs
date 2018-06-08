@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <form action='/cats/<%=cat.id%>' method='POST'>
+        Name: <input type='text' name='name'>
+        Size: <input type='text' name='size'>
+    
+        <input type='submit' value='create cat'>
+    </form>
+
+    <form action='/cats/destroy/<%=cat.id%>' method='POST'>
+        Name1: <input type='text' name='name1'>
+        Size1: <input type='text' name='size1'>
+    
+        <input type='submit' value='destroy cat'>
+    </form>
+</body>
+
+</html>
