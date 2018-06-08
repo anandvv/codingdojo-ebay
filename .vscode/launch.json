@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/Anand/04_Express/sockets_survey/app.js"
+            "program": "${workspaceFolder}/Ramesh/Day4/mongoose_proj/app.js"
         }
     ]
 }

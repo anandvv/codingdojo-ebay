@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Form</title>
+<link rel="stylesheet"  href="/css/survey.css"/>
+<style>
+    div span {
+        color: red;
+    }
+    div span:first-child {
+        color: green;
+        padding-right: 10px;
+    }
+    
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+   
+</head>
+
+<body>
+    <% for( index in quotes) { %>
+        <div><span><%= quotes[index].name %></span><span><%= quotes[index].quote %></span></div>
+     <% } %>
+</body>
+
+</html>

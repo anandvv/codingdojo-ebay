@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Form</title>
+<link rel="stylesheet"  href="/css/survey.css"/>
+<style>
+    div span {
+        color: red;
+    }
+    div span:first-child {
+        color: green;
+        padding-right: 10px;
+    }
+    img {
+        height:100px;
+        width:100px;
+    }
+    
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+   
+</head>
+
+<body>
+    <% if(isNew){ %>
+        <form action="/mongoose/save" method="post">
+            Mongoose Name : <input type="text" name="name"/>
+            Mongoose Image Url: <input type="text" name="imgUrl"/>
+            <input type="submit" value="Add my quote"/>
+         </form>
+    <% }else if(isEdit){ %>
+        <% for( index in mongooses) { %>
+            <form action="/mongoose/save" method="post">
+                <input type="hidden" name="_id" value="<%= mongooses[index]._id %>"/>
+                Mongoose Name : <input type="text" name="name" value="<%= mongooses[index].name %>"/>
+                Mongoose Image Url: <input type="text" name="imgUrl" value="<%= mongooses[index].imgUrl %>"/>
+                <input type="submit" value="Update Mongoose"/>
+            </form>
+         <% } %>      
+    <% }else{ %>
+        <a href="/mongoose/new">Create New</a> 
+        <% for( index in mongooses) { %>
+            <div>
+                <span><%= mongooses[index].name %></span>
+                <img src="<%= mongooses[index].imgUrl %>"></img>
+                <% if(!isShow){ %>
+                    <a href="/mongoose/<%= mongooses[index]._id %>"/>show</a>
+                    <a href="/mongoose/edit/<%= mongooses[index]._id %>"/>Edit</a>
+                    <a href="/mongoose/delete/<%= mongooses[index]._id %>"/>Delete</a>
+                <% } %>
+            </div>
+         <% } %>
+    <% } %>
+</body>
+
+</html>

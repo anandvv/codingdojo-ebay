@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Form</title>
+<link rel="stylesheet"  href="/css/survey.css"/>
+<style>
+    #result {
+        height: 200px;
+        width: 200px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    <script type ="text/javascript">
+    $(document).ready(function (){
+
+        var socket = io(); 
+
+        socket.on('colorChange', function (response) { //4
+            //alert('---color update'+response.color);
+            $("#result").css('background-color',response.color);
+        });
+
+
+        // process the form
+        $('.wrapper').click(function(event) {
+           var src = event.srcElement || event.target;
+           socket.emit('updateColor',{color:$(src).data('color')});
+        });
+         // process the form
+         $('#epicReset').click(function(event) {
+            socket.emit('epicReset');
+        });
+    })
+    </script>
+</head>
+
+<body>
+         <div class="wrapper">
+                <button data-color="red" id="red">Red</button>>
+                <button data-color="green" id="green">Green</button>>
+                <button data-color="blue" id="blue">Blue</button>>
+         </div>
+         <div id="result" style="background-color:<%= color %>"></div>
+</body>
+
+</html>
+db.mongoose_collections.update({name:"Ramesh"},{$set:{imgUrl:"https://a-z-animals.com/media/animals/images/470x370/mongoose9.jpg"}})
+db.mongoose_collections.update({name:"Ramesh"},{$set:{imgUrl:"/images/mongoose1"}});
