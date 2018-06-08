@@ -1,0 +1,18 @@
+<html>
+<body>
+    <h1>Mongoose Delete Form</h1>
+    
+   
+
+    <form action='/mongooses/destroy/<%= data._id %>' method='post'>
+        <h2>Name:   <input type="text" name="name" value="<%= data.name %>"></h2>
+        <h2>Color:  <input type="text" name="color" value="<%= data.color %>"></h2>
+        <h2>Food:  <input type="text" name="food" value="<%= data.food %>"></h2>
+        <input type='submit' value='Destroy Mongoose'>
+        
+    </form>
+    
+    
+    
+</body>
+</html>

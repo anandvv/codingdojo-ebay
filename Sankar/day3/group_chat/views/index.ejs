@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Sockets</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+        <script type ="text/javascript">
+          var arr = [];  
+            function handleClick(){
+                console.log('inside handleclick');
+                            
+                var socket = io();
+                var action = document.activeElement.getAttribute("id");
+                console.log($('#name').val());
+                console.log(action);
+                if (action == 'ok'){
+                    socket.emit('join_user', $('#name').val());
+                } else if (action == 'cancel'){
+                    socket.emit('cancel_user', $('#name').val());
+                }
+                
+                socket.on('server_message', function(data){
+                    arr.push(data);
+                })
+
+                
+                
+            }
+        </script>
+    </head>
+<body>
+    <h1>Group Chat</h1>
+    
+
+
+    <form name="indexform" action='javascript:handleClick(this)'>
+        
+        <h2>Your Name:</h2>
+        <input type="text" name="name" id="name" width="1000">
+        <input type='submit' value='Cancel' id='cancel'>
+        <input type='submit' value='OK' id="ok">
+        
+    </form>
+    
+    
+    
+</body>
+</html>

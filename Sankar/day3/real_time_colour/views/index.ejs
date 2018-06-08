@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Sockets</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+        <script type ="text/javascript">
+            
+            function handleClick(){
+                console.log('inside handleclick');
+                var color = document.activeElement.getAttribute("id");
+                var socket = io();
+                console.log("Element: " + color);
+                socket.emit('client_event', color);
+               
+                socket.on('server_message', function(data){
+                    if (data){
+                        window.alert(data);
+                    }
+                    
+                });
+                
+            }
+
+            function handleLoad(){
+                console.log('inside handleload');
+                var socket = io();
+                socket.emit('client_event');
+                socket.on('server_message', function(data){
+                    if (data){
+                        window.alert(data);
+                    }
+                    
+                });
+                
+            }
+        </script>
+    </head>
+<body onload='javascript:handleLoad(this)'>
+    <h1>Survey Form</h1>
+    
+
+
+    <form name="indexform" action='javascript:handleClick(this)' method='post'>
+        
+        <input type='submit' id='green' value='Green' width="500" height="200"> 
+        <input type='submit' id='blue' value='Blue' width="500" height="200">
+        <input type='submit' id='pink' value='Pink' width="500" height="200">
+        
+    </form>
+    
+    
+    
+</body>
+</html>

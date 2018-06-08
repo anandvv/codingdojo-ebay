@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Sockets</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+        <script type ="text/javascript">
+            
+            function handleClick(){
+                console.log('inside handleclick');
+                            
+                var socket = io();
+                socket.emit('posting_form', {
+                    "name": $('#myname').val(),
+                    "location": $('#mylocation').val(),
+                    "language": $('#mylanguage').val(),
+                    "comments": $('#mycomments').val()
+                });
+                socket.on('updated_message', function(data){
+                    console.log('Inside updated_message');
+                    console.log(data);
+                    window.alert(data);
+                    
+                    
+                });
+                socket.on('random_number', function(data){
+                    console.log('Inside random_number');
+                    console.log(data);
+                    window.alert(data);
+                    
+                });
+                
+            }
+        </script>
+    </head>
+<body>
+    <h1>Survey Form</h1>
+    
+
+
+    <form name="indexform" action='javascript:handleClick(this)' method='post'>
+        <h2>Name:   <input type="text" name="myname" id="myname"></h2>
+        <h2>Location:   <select name="mylocation" id="mylocation">
+                <option>San Jose</option>
+                <option>Orchard</option>
+                <option>Portland</option>
+                <option>New York</option>
+              </select></h2>
+        <h2>Language:   <select name="mylanguage" id="mylanguage">
+                <option>Java</option>
+                <option>Node</option>
+                <option>Python</option>
+                <option>Go</option>
+              </select></h2>
+        <h2>Comment (optional):     <br>
+        <input type="text" name="mycomments" id="mycomments"></h2>
+        <input type='submit' value='Submit'>
+        
+    </form>
+    
+    
+    
+</body>
+</html>

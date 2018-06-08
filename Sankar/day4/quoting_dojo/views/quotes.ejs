@@ -1,0 +1,23 @@
+<html>
+<body>
+    <h1>Quoting Dojo</h1>
+    
+
+    <form>
+        <h2>Here are the awesome quotes!</h2>
+       
+            <% for (idx in data){ %>
+                <%= data[idx].quote %> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp-<%= data[idx].name %> at <%= data[idx].createdAt %><br>
+            <% } %>
+        
+
+        
+        
+        
+    </form>
+    
+    
+    
+</body>
+</html>
