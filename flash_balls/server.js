@@ -16,7 +16,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function(request, response){
-    response.render('index');
+    response.render('player_join');
 });
 
 app.post('/result', function(request, response){
