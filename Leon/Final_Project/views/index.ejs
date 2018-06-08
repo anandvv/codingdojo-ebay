@@ -22,6 +22,9 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+      </div>
     </nav>
       <h1 style="margin: 20px;">Golf Club Page!</h1>
       <div class="container">
@@ -32,7 +35,7 @@
           <div class="golfer">
             <div class="row">
                 <div class="col-2">
-                  <h3><%= data[i].name %></h3>
+                  <h3><a href="/player/<%= data[i]._id %>"><%= data[i].name %></a></h3>
                 </div>
                 <div class="col-6">
                   <img src="<%= data[i].image %>" />

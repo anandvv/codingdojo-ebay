@@ -31,9 +31,9 @@ router.get('/', function(req, res) {
 
 router.get('/player/:id', function(req, res) {
   // TODO change api to find by id
-  Players.find({}, (err, playersData) => {
-    console.log(playersData[1]);
-    res.render('player', {player: playersData[2]});
+  var id = req.params.id;
+  Players.findOne({"_id": id}, (err, playersData) => {
+    res.render('player', {player: playersData});
   });
 });
 
