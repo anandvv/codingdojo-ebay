@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var axios = require('axios');
 
 var mongoose = require('mongoose');
 
@@ -37,4 +37,23 @@ router.get('/player/:id', function(req, res) {
   });
 });
 
+router.get('/results', function(req, res) {
+  var API = "FindingService";
+  var OPERATION_NAME = "findItemsByCategory";
+  var CAT_ID = "115280";
+  var APPNAME = "PakHeiIe-codingdo-PRD-0b058513b-a39b18f0";
+
+  var url = "https://svcs.ebay.com/services/search/"+ API
+  +"/v1?OPERATION-NAME="
+  + OPERATION_NAME
+  +"&SERVICE-VERSION=1.13.0&RESPONSE-DATA-FORMAT=JSON&categoryId="+CAT_ID+"&GLOBAL-ID=EBAY-US&siteid=0&SECURITY-APPNAME=" + APPNAME;
+
+  axios.get(url)
+    .then(function(response){
+        res.json(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 module.exports = router;
