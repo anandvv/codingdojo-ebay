@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+  }
+  html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+  }
+  .header, .board {
+     width: 100%;
+  }
+  .header {
+      height: 200px;
+      border: 5px solid black;
+      padding:25px;
+      
+      
+  }
+  .header .score {
+    font-size: 2rem;
+  }
+  .header .sliderWrap {
+        padding-top:25px;
+    }
+   .header .sliderWrap input {
+        width: 100%;
+    }
+    .header .sliderWrap label {
+        font-size: 2rem;
+    }
+  .board {
+      height: calc(100% - 200px);
+      position:relative;
+      border:3px solid black;
+  }
+
+  .board .dot {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    transform: translateY(-100%);
+    left: 0;
+    border: 2px solid black;
+    border-radius: 50%;
+    will-change: transform;
+}
