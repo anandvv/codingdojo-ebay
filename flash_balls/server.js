@@ -33,14 +33,23 @@ let dict = {};
 const server = app.listen(1337, function(){
     console.log('listening on port 1337');
 });
-
+var count = 0;
 const io = require('socket.io')(server);
 
     io.on('connection', function(socket){
         socket.emit('greeting', {msg: 'Greetings, from server Node, brought to you by Sockets! -Server'});
         socket.on('user_join', function(user){
+            count++;
             users.add(user);
-	        dict[user] = 0;
+            dict[user] = 0;
+            if (count === 1) user_color[user] = 'Green';
+            else if (count === 2) user_color[user] = 'Yellow';
+            else if (count === 3) {
+                user_color[user] = 'Blue';
+                count = 0;
+                io.emit('start_game', user_color);
+
+            }
             io.emit('joined_user', user);
         });
 
