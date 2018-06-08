@@ -4,7 +4,10 @@ console.log("Let's find out what express is", express);
 // invoke express and store the result in the variable app
 var app = express();
 console.log("Let's find out what app is", app);
-
+var count = 0;
+let users = new Set();
+let user_color = {};
+let dict = {};
 
 app.use(express.static(__dirname + "/static"));
 
@@ -15,8 +18,17 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+
 app.get('/', function(request, response){
-    response.render('player_join');
+    response.render('player_join',{userName:''});
+});
+
+
+app.post('/join', function(request, response){
+    let userName = request.body.user_name;
+    joinUser(userName);
+
+    response.render('player_join', {userName: userName,users:users});
 });
 
 app.post('/result', function(request, response){
@@ -24,17 +36,29 @@ app.post('/result', function(request, response){
     response.render('result', {info:request.body});
 });
 
-let users = new Set();
-let user_color = {};
-let dict = {};
+
 
 
 // tell the express app to listen on port 8000, always put this at the end of your server.js file
 const server = app.listen(1337, function(){
     console.log('listening on port 1337');
 });
-var count = 0;
+
 const io = require('socket.io')(server);
+
+ function joinUser(user){
+        count++;
+            users.add(user);
+            dict[user] = 0;
+            if (count === 1) user_color[user] = 'Green';
+            else if (count === 2) user_color[user] = 'Yellow';
+            else if (count === 3) {
+                user_color[user] = 'Blue';
+                count = 0;
+                io.emit('start_game', user_color);
+            }
+            io.emit('joined_user', {userName:user});
+ }
 
     io.on('connection', function(socket){
         socket.emit('greeting', {msg: 'Greetings, from server Node, brought to you by Sockets! -Server'});
@@ -46,11 +70,10 @@ const io = require('socket.io')(server);
             else if (count === 2) user_color[user] = 'Yellow';
             else if (count === 3) {
                 user_color[user] = 'Blue';
-                count = 0;
+                count= 0;
                 io.emit('start_game', user_color);
-
             }
-            io.emit('joined_user', user);
+            io.emit('joined_user', {userName:user});
         });
 
         socket.on('user_leave', function(user){

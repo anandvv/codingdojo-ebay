@@ -7,6 +7,7 @@
     <script type ="text/javascript">
         var socket = io(); //1
         var user;
+        
         $(document).ready(function (){  
             socket.on('greeting', function (data) { //4
                 console.log(data.color); //5
@@ -15,21 +16,32 @@
                 $('body').css("background-color", data.color);
             });
             
-            socket.on('user_joined',function(user) {
+            socket.on('joined_user',function(response) {
                 console.log("update user");
-                $('#players').html(user.user_name);
+                $('#userForm').hide();
+                $('#chatBoard')[0].appendChild(createStatus(response.userName+" joined"))
+               //$('#status').html("You joined Wait for Others to join");
             });
 
-            $('#btn').submit(function(){
-                console.log("user joined!!!!");
-                var msg = $('#player_name').val();
-
-                socket.emit('user_join', {user_name:msg});
-                return false;
-            });
+            function createStatus(message){
+                var div = document.createElement('div');
+                div.innerHTML=message;
+                return div;
+            }
             });
 
     </script>
+    <style>
+        #chatBoard{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-color: lightblue;
+        }
+        #chatBoard div{
+            color:red;
+        }
+    </style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,11 +52,22 @@
     <h1 id=greeting></h1>
     
    <h7 id=players></h7>
-   <h5 id=chats></h5>
-
-    <form id=btn>
-        Enter your user name: <input id='player_name' type='text' name='user_name'>
-        <input  type='submit' value='Join The Game!'>
-    </form>
+   
+   <% if(!userName){ %>
+        <form action="/join" method="post" id="userForm">
+            Enter your user name: <input id='player_name' type='text' name='user_name'>
+            <input  type='submit' value='Join The Game!'>
+        </form>
+   <% } else { %>
+        inside else
+        <h5 id=chatBoard>
+                <% var users = Array.from(users) %>
+                <% for(i=0;i<users.length;i++) { %>
+                    <div><%= users[i] %> Joined.</div>
+                 <% } %>
+        </h5>
+   <% } %>
+    
+    <div id="status"></div>
 </body>
 </html>
