@@ -27,16 +27,27 @@
       <div class="container">
         <h4>Here are some amazing golfers.</h4>
         <hr>
-        <div class="golfer">
-          <h3>Broc Everett</h3>
-          <img src="http://wpmediars.golfwrx.com/wp-content/uploads/2018/06/BrocEverettNCAAMens2018WRX.jpg" />
-          <p class="golfer-bio">Broc Is a nice guy </p>
-        </div>
-        <div class="golfer">
-          <h3>Tiger Woods</h3>
-          <img src="http://wpmediars.golfwrx.com/wp-content/uploads/2018/05/GettyImages-484899284.jpg" />
-          <p class="golfer-bio">Tiger woods is a pretty cool guy I guess</p>
-        </div>
+        <% for(let i in data) {%>
+          <% console.log(data[i]) %>
+          <div class="golfer">
+            <h3><%= data[i].name %></h3>
+            <img src="<%= data[i].image %>" />
+            <p class="golfer-bio"><%= data[i].about %></p>
+          </div>
+        <% } %>
     </div>
   </body>
 </html>
+
+
+<div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
