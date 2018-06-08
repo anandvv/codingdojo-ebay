@@ -9,36 +9,20 @@ body {
   width: 80%;
 }
 
-.messages {
+.golfer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: left;
+  margin-bottom: 20px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.new-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.button {
-  margin: 10px;
-  background-color: teal;
+.golfer-bio {
+  margin-left: 5px;
+  border: 1px solid black;
   border-radius: 5px;
-  color: white;
-  padding: .5em;
-  text-decoration: none;
-}
-
-.card {
-  margin: 10px;
-  width: 500px;
+  padding: 5px;
+  background-color: #e3e3e3;
+  width: 400px;
 }
 
 img {
@@ -46,7 +30,7 @@ img {
   max-height: 500px;
 }
 
-.animal img {
+.golfer img {
   border-radius: 100px;
 }
 
