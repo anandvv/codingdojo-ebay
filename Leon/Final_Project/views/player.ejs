@@ -8,41 +8,28 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
     <script>
     $(document).ready(function(){
 
     });
     </script>
-    <title>Golf Clubs</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Golf Clubs</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-      <h1 style="margin: 20px;">Golf Club Page!</h1>
-      <div class="container">
-        <h4>Here are some amazing golfers.</h4>
-        <hr>
-        <% for(let i in data) {%>
-          <% console.log(data[i]) %>
-          <div class="golfer">
-            <div class="row">
-                <div style="background-color:blue" class="col-2">
-                  <h3><%= data[i].name %></h3>
-                </div>
-                <div style="background-color:red" class="col-6">
-                  <img src="<%= data[i].image %>" />
-                </div>
-                <div style="background-color:green" class="col-4">
-                  <p class="golfer-bio"><%= data[i].about %></p>
-                </div>
-              </div>
-          </div>
-        <% } %>
+      <div>Player 1</div>
+    <div>
+        <div class="player-left">
+            <div>
+                Work in progress
+            </div>
+
+        </div>
+
+        <div class="player-right">
+            <div>
+
+            </div>
+        </div>
+
     </div>
   </body>
 </html>
