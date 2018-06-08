@@ -13,6 +13,7 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
 .player-right {
     padding-top: 2%;
     padding-left: 2%;
+    padding-right: 2%;
     width: 40%;
     background: #00000024;
 }
@@ -59,6 +60,9 @@ body { position:absolute; top:0; bottom:0; right:0; left:0; }
     font-size: 1.2rem;
     color: #4e774e;
     padding-bottom: 4%;
+}
+
+#hotspot {
 }
 /* 
 .image-container .after {

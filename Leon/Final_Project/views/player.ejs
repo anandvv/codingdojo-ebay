@@ -15,10 +15,23 @@
     </script>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Golf Clubs</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+      </div>
+    </nav>
     <div class="player-container">
         <div class="player-left">
                 <div class="image-container">
-                        <img class="player-image" src= <%= player.image %> />
+                        <img class="player-image"  width="145" height="126"  usemap="#playermap" src= <%= player.image %> />
+                        <map name="playermap">
+                                <area id="hotspot" shape="rect" alt="Sun" coords="<%= player.equipments[0].coord %>" href="<%= player.image %>" >
+                        </map>
+
                         <div class="player-image-overlay"> <%= player.name %> </div>
                 </div>
         </div>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<findItemsByCategoryRequest xmlns="http://www.ebay.com/marketplace/search/v1/services">
+  <categoryId>115280</categoryId>
+  <itemFilter> ItemFilter 
+    <name> Condition </name>
+    <value> New </value>
+    <paramName>  </paramName>
+    <paramValue>  </paramValue>
+    <!-- ... more value values allowed here ... -->
+  </itemFilter>
+  <itemFilter> ItemFilter
+    <name> ListingType </name>
+    <value> FixedPrice </value>
+    <paramName>  </paramName>
+    <paramValue>  </paramValue>
+    <!-- ... more value values allowed here ... -->
+  </itemFilter>
+  <itemFilter> ItemFilter
+    <name> FreeShippingOnly </name>
+    <value> true </value>
+    <paramName>  </paramName>
+    <paramValue>  </paramValue>
+    <!-- ... more value values allowed here ... -->
+  </itemFilter>
+  <aspectFilter>
+      <aspectName> Brand </aspectName>
+      <aspectValueName> Nike </aspectValueName> 
+  </aspectFilter>
+  <outputSelector>AspectHistogram</outputSelector>
+  <outputSelector>SellerInfo</outputSelector>
+  <paginationInput>
+    <entriesPerPage>2</entriesPerPage>
+  </paginationInput>
+</findItemsByCategoryRequest>
