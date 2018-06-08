@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    
+    <script type ="text/javascript">
+        var socket = io(); //1
+        var user;
+        
+        $(document).ready(function (){  
+            socket.on('greeting', function (data) { //4
+                console.log(data.color); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me!!!! -Client' }); //6
+                $('#b1').html(data.cnt);
+                $('body').css("background-color", data.color);
+            });
+            
+            socket.on('joined_user',function(response) {
+                console.log("update user");
+                $('#userForm').hide();
+                $('#chatBoard')[0].appendChild(createStatus(response.userName+" joined"))
+               //$('#status').html("You joined Wait for Others to join");
+            });
+
+            function createStatus(message){
+                var div = document.createElement('div');
+                div.innerHTML=message;
+                return div;
+            }
+            });
+
+    </script>
+    <style>
+        #chatBoard{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-color: lightblue;
+        }
+        #chatBoard div{
+            color:red;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id=greeting></h1>
+    
+   <h7 id=players></h7>
+   
+   <% if(!userName){ %>
+        <form action="/join" method="post" id="userForm">
+            Enter your user name: <input id='player_name' type='text' name='user_name'>
+            <input  type='submit' value='Join The Game!'>
+        </form>
+   <% } else { %>
+        inside else
+        <h5 id=chatBoard>
+                <% var users = Array.from(users) %>
+                <% for(i=0;i<users.length;i++) { %>
+                    <div><%= users[i] %> Joined.</div>
+                 <% } %>
+        </h5>
+   <% } %>
+    
+    <div id="status"></div>
+</body>
+</html>

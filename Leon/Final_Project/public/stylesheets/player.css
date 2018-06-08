@@ -1,0 +1,80 @@
+html { height:100%; }
+body { position:absolute; top:0; bottom:0; right:0; left:0; }
+.player-container {
+    display: inline-flex;
+    height: 100%;
+    background:#4e774e0d;
+}
+
+.player-left {
+    width: 60%;
+}
+
+.player-right {
+    padding-top: 2%;
+    padding-left: 2%;
+    width: 40%;
+    background: #00000024;
+}
+
+.image-container {
+    position: relative;
+    margin-top: 5%;
+    width: 80%;
+    height: 85%;
+    margin-left: 9%;
+}
+
+.player-image {
+    width: 100%;
+    height: 100%;
+}
+
+.player-image-overlay {
+    position: absolute;
+    top: 0%;
+    padding: 2%;
+    text-align: left;
+    width: 100%;
+    font-size: 1.5rem;
+    color: #dadeda;
+    background: #0000006e;
+}
+
+.player-name {
+    padding: 2%;
+    background: #4e774e;
+    margin-bottom: 5%;
+}
+
+.player-about {
+    margin-top: 5%;
+    padding-bottom: 7%;
+    white-space: pre-line;
+    border-bottom: 1px solid #4e774e;
+}
+
+.equipments-header {
+    padding-top: 7%;
+    font-size: 1.2rem;
+    color: #4e774e;
+    padding-bottom: 4%;
+}
+
+#hotspot {
+    border: 1px solid black;
+}
+/* 
+.image-container .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: #FFF;
+}
+.image-container:hover .after {
+    display: block;
+    background: rgba(0, 0, 0, .6);
+} */

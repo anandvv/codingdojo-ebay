@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    
+    <script type ="text/javascript">
+        var socket = io(); //1
+        var user;
+        $(document).ready(function (){  
+            socket.on('greeting', function (data) { //4
+                console.log(data.color); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+                $('#b1').html(data.cnt);
+                $('body').css("background-color", data.color);
+            });
+          
+            
+
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+</body>
+</html>

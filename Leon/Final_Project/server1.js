@@ -9,14 +9,11 @@ var axios = require('axios');
 var bodyParser = require('body-parser');
 
 var dbConfig = require('./db1.js')
-/*===========================MONGOOSE===============================*/
+
+var routes = require("./routes/routes.js");
 var mongoose = require('mongoose');
-var MessageSchema = new mongoose.Schema({
- name: String,
- message: String
-},{timestamps: true})
-mongoose.model('Message', MessageSchema); // We are setting this Schema in our Models as 'User'
-var Message = mongoose.model('Message') // We are retrieving this Schema from our Models, named 'User'
+/*===========================MONGOOSE===============================*/
+
 
 /*
 You won't be able to connect to my own database. I was unable to install mongodb
@@ -42,13 +39,8 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 // Routes
 // Root Request
-app.get('/', function(req, res) {
-    // This is where we will retrieve the users from the database and include them in the view page we will be rendering.
-    Message.find({}).sort({'createdAt': 1}).exec(function(err, docs) {
-      console.log(docs);
-      res.render('index', { messages: docs });
-    });
-});
+
+app.use(routes);
 
 app.get('/results', function(req, res) {
   // Construct the request

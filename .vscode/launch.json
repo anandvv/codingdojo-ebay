@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/Ramesh/Day4/mongoose_proj/app.js"
+            "program": "${workspaceFolder}/flash_balls/server.js"
         }
     ]
 }
