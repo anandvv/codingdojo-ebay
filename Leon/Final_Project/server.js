@@ -4,16 +4,17 @@ var express = require('express');
 var app = express();
 // Require body-parser (to receive post data from clients)
 var bodyParser = require('body-parser');
-
+var routes = require("./routes/routes.js");
 var dbConfig = require('./db.js')
 /*===========================MONGOOSE===============================*/
 var mongoose = require('mongoose');
-var MessageSchema = new mongoose.Schema({
+var PlayerSchema = new mongoose.Schema({
  name: String,
- message: String
+ about: String,
+ image: String
 },{timestamps: true})
-mongoose.model('Message', MessageSchema); // We are setting this Schema in our Models as 'User'
-var Message = mongoose.model('Message') // We are retrieving this Schema from our Models, named 'User'
+mongoose.model('Player', PlayerSchema); // We are setting this Schema in our Models as 'User'
+var Player = mongoose.model('Player') // We are retrieving this Schema from our Models, named 'User'
 
 /*
 You won't be able to connect to my own database. I was unable to install mongodb
@@ -38,13 +39,7 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 // Routes
 // Root Request
-app.get('/', function(req, res) {
-    // This is where we will retrieve the users from the database and include them in the view page we will be rendering.
-    Message.find({}).sort({'createdAt': 1}).exec(function(err, docs) {
-      console.log(docs);
-      res.render('index', { messages: docs });
-    });
-});
+app.use(routes);
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');

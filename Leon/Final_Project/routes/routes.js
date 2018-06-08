@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
     // This is where we will retrieve the users from the database and include them in the view page we will be rendering.
     Players.find({}).sort({'createdAt': 1}).exec(function(err, docs) {
       console.log(docs);
-      res.render('index', { messages: docs });
+      res.render('index', { data: docs });
     });
 });
 

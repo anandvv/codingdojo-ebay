@@ -17,17 +17,17 @@ body {
 }
 
 .golfer-bio {
-  margin-left: 5px;
+  margin-top: 10px;
   border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
   background-color: #e3e3e3;
-  width: 400px;
+
 }
 
 img {
-  max-width: 500px;
-  max-height: 500px;
+  max-width: 400px;
+  max-height: 400px;
 }
 
 .golfer img {
