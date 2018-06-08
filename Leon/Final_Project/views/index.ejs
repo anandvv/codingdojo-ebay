@@ -30,24 +30,19 @@
         <% for(let i in data) {%>
           <% console.log(data[i]) %>
           <div class="golfer">
-            <h3><%= data[i].name %></h3>
-            <img src="<%= data[i].image %>" />
-            <p class="golfer-bio"><%= data[i].about %></p>
+            <div class="row">
+                <div style="background-color:blue" class="col-2">
+                  <h3><%= data[i].name %></h3>
+                </div>
+                <div style="background-color:red" class="col-6">
+                  <img src="<%= data[i].image %>" />
+                </div>
+                <div style="background-color:green" class="col-4">
+                  <p class="golfer-bio"><%= data[i].about %></p>
+                </div>
+              </div>
           </div>
         <% } %>
     </div>
   </body>
 </html>
-
-
-<div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
