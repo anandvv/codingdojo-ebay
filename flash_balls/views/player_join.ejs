@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Sockets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    
+    <script type ="text/javascript">
+        var socket = io(); //1
+        var user;
+        $(document).ready(function (){  
+            socket.on('greeting', function (data) { //4
+                console.log(data.color); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me!!!! -Client' }); //6
+                $('#b1').html(data.cnt);
+                $('body').css("background-color", data.color);
+            });
+            
+            socket.on('user_joined',function(user) {
+                console.log("update user");
+                $('#players').html(user.user_name);
+            });
+
+            $('#btn').submit(function(){
+                console.log("user joined!!!!");
+                var msg = $('#player_name').val();
+
+                socket.emit('user_join', {user_name:msg});
+                return false;
+            });
+            });
+
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id=greeting></h1>
+    
+   <h7 id=players></h7>
+   <h5 id=chats></h5>
+
+    <form id=btn>
+        Enter your user name: <input id='player_name' type='text' name='user_name'>
+        <input  type='submit' value='Join The Game!'>
+    </form>
+</body>
+</html>
