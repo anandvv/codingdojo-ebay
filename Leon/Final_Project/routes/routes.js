@@ -50,7 +50,7 @@ router.get('/results', function(req, res) {
 
   axios.get(url)
     .then(function(response){
-        res.json(response.data);
+        res.render("results", {data: response.data});
     })
     .catch((err) => {
       console.log(err);
