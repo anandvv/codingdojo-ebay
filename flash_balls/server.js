@@ -75,8 +75,8 @@ const io = require('socket.io')(server);
             io.emit('score_data', dict);
         });
 
-        socket.on('wrong_hit', function(user){
-            dict[user] = dict[user] - 1;
+        socket.on('wrong_hit', function(response){
+            dict[response.user] = dict[response.user] - response.score;
             io.emit('score_data', dict);
         });
     

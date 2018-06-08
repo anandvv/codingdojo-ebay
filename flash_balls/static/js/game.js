@@ -78,12 +78,14 @@ var Game = function DotGame(options){
          var dot = e.srcEleemnt || e.target;
          if(hasClass(dot,'dot')){
               var colorFromDot = dot.getAttribute('color');
+              var dia = parseInt(dot.getAttribute('dia'));
+              var score = Math.floor((200-dia)/2) +1;
               if(window.color == colorFromDot){
-                    var dia = parseInt(dot.getAttribute('dia'));
-                    var score = Math.floor((200-dia)/2) +1;
                     socket.emit('ball_hit',{user:currentUserName,score:score});
                     //scoreBoard.innerHTML = parseInt(scoreBoard.innerHTML)+score;
                     board.removeChild(dot);
+              }else{
+                   socket.emit('wrong_hit',{user:currentUserName,score:score});
               }
          }
       });
