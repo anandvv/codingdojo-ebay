@@ -7,8 +7,10 @@
 
 <body>
 <h1>Here are the awesome quotes!</h1>
-<% for( index in quotes) { %>
-    <%= quotes[index] %>
+
+<% for (idx in quotes){ %>
+    "<%= quotes[idx].quote %>" <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp-<%= quotes[idx].name %> at <%= quotes[idx].created_at %><br>
 <% } %>
 
 </body>
