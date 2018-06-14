@@ -1,3 +1,5 @@
 .DS_Store
 .vscode/launch.json
 Shelly/
+node_modules/
+
